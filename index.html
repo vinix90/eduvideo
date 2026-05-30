@@ -136,7 +136,7 @@ footer{background:#1e293b;color:#94a3b8;padding:32px 0;text-align:center;font-si
 /* THEME TOGGLE */
 .theme-btn{position:fixed;bottom:20px;right:20px;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;font-size:20px;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .3s;background:#1e293b;color:#fbbf24}
 .theme-btn:hover{transform:scale(1.1)}
-.dark-mode .theme-btn{background:#fbbf24;color:#1e293b}
+.dark-mode .theme-btn{background:#fbbf24;color:#1e293b}.top-btn{position:fixed;bottom:74px;right:20px;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;font-size:18px;z-index:998;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .3s;background:#2563eb;color:#fff;display:none}.top-btn:hover{background:#1d4ed8;transform:scale(1.1)}.dark-mode .top-btn{background:#1e40af}
 /* TOAST */
 .toast{position:fixed;bottom:80px;right:20px;background:#059669;color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:500;z-index:99999;box-shadow:0 4px 20px rgba(0,0,0,.2);animation:slideUp .3s;max-width:300px}
 .toast.error{background:#dc2626}
@@ -260,11 +260,11 @@ footer{background:#1e293b;color:#94a3b8;padding:32px 0;text-align:center;font-si
 const K = {
   // === TOÁN ===
   toan1:{n:'Toán 1',ch:[{t:'Số học',bg:'#e8f4fd',lessons:[{t:'Số 0-10',v:[{i:'g8zsMRs2OcU',n:'Toán 1 Số học',c:'VJ'},{i:'cKq8Nv-8LhU',n:'Đếm số 1-10',c:'CT'}]},{t:'Phép cộng trừ',v:[{i:'PuGATCejC60',n:'Cộng trừ T1',c:'CT'}]}]},{t:'Hình học',bg:'#fef3c7',lessons:[{t:'Hình khối',v:[{i:'UG46i0KiXrU',n:'VJ',c:'VietJack'},{i:'TgY9T7iWC-A',n:'VJ',c:'VietJack'},{i:'zZM-CvgpKX0',n:'VJ',c:'VietJack'},{i:'FYTpm0Fz6HM',n:'VJ',c:'VietJack'},{i:'kXQDlj5RT84',n:'VJ',c:'VietJack'},{i:'hWLXhOUdm0U',n:'VJ',c:'VietJack'},{i:'CjuT67rzTsE',n:'VJ',c:'VietJack'},{i:'1c9rorXFTYk',n:'VJ',c:'VietJack'}]}]}]},
-  toan2:{n:'Toán 2',ch:[{t:'Số học',bg:'#e8f4fd',lessons:[{t:'Phép nhân chia',v:[{i:'g8zsMRs2OcU',n:'Toán 2 Cơ bản',c:'VJ'}]}]}]},
-  toan3:{n:'Toán 3',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'g8zsMRs2OcU',n:'Toán 3 VJ',c:'VJ'}]}]}]},
-  toan4:{n:'Toán 4',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'g8zsMRs2OcU',n:'Toán 4 VJ',c:'VJ'}]}]}]},
-  toan5:{n:'Toán 5',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'g8zsMRs2OcU',n:'Toán 5 VJ',c:'VJ'}]}]}]},
-  toan6:{n:'Toán 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'nDqC-YWY2ik',n:'Toán 6 TQ',c:'TQ'}]}]}]},
+  toan2:{n:'Toán 2',ch:[{t:'Số học',bg:'#e8f4fd',lessons:[{t:'Phép nhân chia',v:[{i:'WBrPd96e6Wk',n:'Toán 2 Tập hợp',c:'VJ'},{i:'gUtIhlCluwI',n:'Toán 2 Số học',c:'VJ'},{i:'7fr8UxFs8ic',n:'Toán 2 Hình học',c:'VJ'},{i:'UG46i0KiXrU',n:'Toán 2 Nâng cao',c:'VJ'},{i:'kXQDlj5RT84',n:'Toán 2 Luyện tập',c:'VJ'}]}]}]},
+  toan3:{n:'Toán 3',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'WBrPd96e6Wk',n:'Toán 3 Số học',c:'VJ'},{i:'gUtIhlCluwI',n:'Toán 3 Đại số',c:'VJ'},{i:'TgY9T7iWC-A',n:'Toán 3 Hình học',c:'VJ'},{i:'zZM-CvgpKX0',n:'Toán 3 Luyện tập',c:'VJ'},{i:'FYTpm0Fz6HM',n:'Toán 3 Ôn tập',c:'VJ'}]}]}]},
+  toan4:{n:'Toán 4',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'WBrPd96e6Wk',n:'Toán 4 Số học',c:'VJ'},{i:'gUtIhlCluwI',n:'Toán 4 Phân số',c:'VJ'},{i:'hWLXhOUdm0U',n:'Toán 4 Hình học',c:'VJ'},{i:'CjuT67rzTsE',n:'Toán 4 Đo lường',c:'VJ'},{i:'1c9rorXFTYk',n:'Toán 4 Ôn tập',c:'VJ'}]}]}]},
+  toan5:{n:'Toán 5',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'WBrPd96e6Wk',n:'Toán 5 Số thập phân',c:'VJ'},{i:'gUtIhlCluwI',n:'Toán 5 Tỉ số',c:'VJ'},{i:'TgY9T7iWC-A',n:'Toán 5 Hình học',c:'VJ'},{i:'zZM-CvgpKX0',n:'Toán 5 Vận tốc',c:'VJ'},{i:'FYTpm0Fz6HM',n:'Toán 5 Ôn tập',c:'VJ'}]}]}]},
+  toan6:{n:'Toán 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'WBrPd96e6Wk',n:'Toán 6 Giới thiệu',c:'VJ'},{i:'gUtIhlCluwI',n:'Toán 6 Tập hợp',c:'VJ'},{i:'UG46i0KiXrU',n:'Toán 6 Số tự nhiên',c:'VJ'},{i:'kXQDlj5RT84',n:'Toán 6 Phân số',c:'VJ'},{i:'hWLXhOUdm0U',n:'Toán 6 Hình học',c:'VJ'}]}]}]},
   toan7:{n:'Toán 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'V9ytA5lPm44',n:'T7 TQ T1',c:'VJ'},{i:'UI-UxbLa1mI',n:'T7 TQ T2',c:'VJ'},{i:'d1oCl3iILqI',n:'T7 TQ T3',c:'VJ'},{i:'Sbe-kPkQCH8',n:'T7 TQ T4',c:'VJ'},{i:'hf0BR4oytQU',n:'T7 TQ T5',c:'VJ'}]}]}]},
   toan8:{n:'Toán 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VI4zsMTv4BE',n:'T8 TQ T1',c:'VJ'},{i:'glGYJAPE-J4',n:'T8 TQ T2',c:'VJ'},{i:'Dk1KNo88UHU',n:'T8 TQ T3',c:'VJ'},{i:'4Eequpqx7zs',n:'T8 TQ T4',c:'VJ'},{i:'BR7lel_qZRw',n:'T8 TQ T5',c:'VJ'}]}]}]},
   toan9:{n:'Toán 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'nDqC-YWY2ik',n:'T9 TQ T1',c:'VJ'},{i:'9dDCHANWETs',n:'T9 TQ T2',c:'VJ'},{i:'gNajxAy4TtE',n:'T9 TQ T3',c:'VJ'},{i:'-54oM-UE4ck',n:'T9 TQ T4',c:'VJ'},{i:'KAazDN0Xmr0',n:'T9 TQ T5',c:'VJ'}]}]}]},
@@ -301,62 +301,96 @@ const K = {
       {t:'B19: PT đường thẳng',v:[{i:'PleToG7EBC0',n:'PT đt T1',c:'TQ'},{i:'MgbG9blpXGU',n:'PT đt T2',c:'TQ'},{i:'ks-vCi3zEfc',n:'PT đt T3',c:'TQ'},{i:'7UGxbu25Hsw',n:'PT đt T4',c:'TQ'},{i:'KL0ONA7edhM',n:'PT đt T5',c:'TQ'}]},
       {t:'B20: Vị trí tương đối',v:[{i:'lI64ELB7-Y0',n:'VTTĐ T1',c:'TQ'},{i:'wUeklHGY3DY',n:'VTTĐ T2',c:'TQ'},{i:'dwFtPGuZj4c',n:'VTTĐ T3',c:'TQ'}]}]},
     {t:'C8+9: Tổ hợp + Xác suất',bg:'#fef3c7',lessons:[{t:'B23-27: Đại số tổ hợp, Xác suất',v:[{i:'3zqwH7pLhlY',n:'VJ',c:'VietJack'},{i:'Alz53g47Nbk',n:'VJ',c:'VietJack'},{i:'QtvTkc7YjC4',n:'VJ',c:'VietJack'},{i:'F4pCnUHd_G0',n:'VJ',c:'VietJack'},{i:'cw_5EiL2asY',n:'VJ',c:'VietJack'},{i:'L0GGm6BBE0A',n:'VJ',c:'VietJack'},{i:'sPvKmUq3J80',n:'VJ',c:'VietJack'},{i:'vWh41JLvOTM',n:'VJ',c:'VietJack'}]}]}]},
-  toan11:{n:'Toán 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'hBx3cV2ugks',n:'T11 TQ T1',c:'VJ'},{i:'uyhbVbE1EYo',n:'T11 TQ T2',c:'VJ'},{i:'9TJpKdVQE54',n:'T11 TQ T3',c:'VJ'},{i:'wjEj8I7ED30',n:'T11 TQ T4',c:'VJ'},{i:'K_ChlBRnRTs',n:'T11 TQ T5',c:'VJ'}]}]}]},
-  toan12:{n:'Toán 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'phvpqxLNTUQ',n:'T12 VJ',c:'VJ'},{i:'W_RNJgPcUUw',n:'T12 VJ2',c:'VJ'},{i:'mXjOLdANp-g',n:'T12 VJ3',c:'VJ'},{i:'7XaLq6-i3T8',n:'T12 VJ4',c:'VJ'}]}]}]},
+  toan11:{n:'Toán 11',ch:[{t:'Đại số & Lượng giác',bg:'#e8f4fd',lessons:[{t:'Hàm số lượng giác',v:[{i:'hBx3cV2ugks',n:'HSLG T1',c:'VJ'},{i:'uyhbVbE1EYo',n:'HSLG T2',c:'VJ'},{i:'3zqwH7pLhlY',n:'HSLG T3',c:'VJ'}]},{t:'Dãy số - Cấp số',v:[{i:'9TJpKdVQE54',n:'Dãy số T1',c:'VJ'},{i:'Alz53g47Nbk',n:'Cấp số cộng',c:'VJ'},{i:'QtvTkc7YjC4',n:'Cấp số nhân',c:'VJ'}]},{t:'Giới hạn - Đạo hàm',v:[{i:'wjEj8I7ED30',n:'Giới hạn T1',c:'VJ'},{i:'F4pCnUHd_G0',n:'Đạo hàm T1',c:'VJ'},{i:'cw_5EiL2asY',n:'Đạo hàm T2',c:'VJ'}]}]},{t:'Hình học',bg:'#fef3c7',lessons:[{t:'Phép biến hình',v:[{i:'K_ChlBRnRTs',n:'Phép dời hình',c:'VJ'},{i:'sPvKmUq3J80',n:'Phép vị tự',c:'VJ'}]},{t:'Đường thẳng & Mặt phẳng',v:[{i:'vWh41JLvOTM',n:'ĐT & MP',c:'VJ'},{i:'L0GGm6BBE0A',n:'Quan hệ song song',c:'VJ'}]}]}]},
+  toan12:{n:'Toán 12',ch:[{t:'Giải tích 12',bg:'#e8f4fd',lessons:[{t:'Ứng dụng đạo hàm',v:[{i:'phvpqxLNTUQ',n:'Đơn điệu',c:'VJ'},{i:'W_RNJgPcUUw',n:'Cực trị',c:'VJ'},{i:'L0GGm6BBE0A',n:'GT-LN',c:'VJ'}]},{t:'Mũ & Logarit',v:[{i:'mXjOLdANp-g',n:'Mũ T1',c:'VJ'},{i:'sPvKmUq3J80',n:'Logarit T1',c:'VJ'}]},{t:'Tích phân & Số phức',v:[{i:'7XaLq6-i3T8',n:'Nguyên hàm',c:'VJ'},{i:'vWh41JLvOTM',n:'Số phức',c:'VJ'}]}]},{t:'Hình học 12',bg:'#fef3c7',lessons:[{t:'Hình Oxyz',v:[{i:'UG46i0KiXrU',n:'Oxyz CB',c:'VJ'},{i:'kXQDlj5RT84',n:'PT mặt cầu',c:'VJ'}]}]}]},
   // === VẬT LÝ ===
-  ly6:{n:'Vật Lý 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L6 Cơ bản',c:'VJ'}]}]}]},
-  ly7:{n:'Vật Lý 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L7 Cơ bản',c:'VJ'}]}]}]},
-  ly8:{n:'Vật Lý 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L8 Cơ bản',c:'VJ'}]}]}]},
-  ly9:{n:'Vật Lý 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L9 Cơ bản',c:'VJ'}]}]}]},
-  ly10:{n:'Vật Lý 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L10 VJ',c:'VJ'},{i:'beLH1Q5UqS0',n:'L10 VJ2',c:'VJ'},{i:'eR7Meg07bz4',n:'L10 VJ3',c:'VJ'},{i:'q2v5edqqTZQ',n:'L10 VJ4',c:'VJ'}]}]}]},
-  ly11:{n:'Vật Lý 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'k9J7SCuAR0I',n:'L11 VJ',c:'VJ'},{i:'MsxloIGZvwU',n:'L11 VJ2',c:'VJ'},{i:'vwQ7oC-WuWQ',n:'L11 VJ3',c:'VJ'},{i:'hBx3cV2ugks',n:'L11 VJ4',c:'VJ'}]}]}]},
-  ly12:{n:'Vật Lý 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'2FqKmebYY1E',n:'L12 VJ',c:'VJ'},{i:'e0uIcQz9x5g',n:'L12 VJ2',c:'VJ'},{i:'sxIuk9jOHzU',n:'L12 VJ3',c:'VJ'},{i:'V_Ug97vQOSQ',n:'L12 VJ4',c:'VJ'}]}]}]},
+  ly6:{n:'Vật Lý 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7fr8UxFs8ic',n:'Lý 6 Đo độ dài',c:'VJ'},{i:'Jbt_nBBJ1BI',n:'Lý 6 Lực',c:'VJ'},{i:'beLH1Q5UqS0',n:'Lý 6 Nhiệt học',c:'VJ'},{i:'eR7Meg07bz4',n:'Lý 6 Máy cơ',c:'VJ'}]}]}]},
+  ly7:{n:'Vật Lý 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7fr8UxFs8ic',n:'Lý 7 Quang học',c:'VJ'},{i:'Jbt_nBBJ1BI',n:'Lý 7 Âm học',c:'VJ'},{i:'beLH1Q5UqS0',n:'Lý 7 Điện học',c:'VJ'},{i:'eR7Meg07bz4',n:'Lý 7 Ôn tập',c:'VJ'}]}]}]},
+  ly8:{n:'Vật Lý 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7fr8UxFs8ic',n:'Lý 8 Cơ học',c:'VJ'},{i:'Jbt_nBBJ1BI',n:'Lý 8 Áp suất',c:'VJ'},{i:'beLH1Q5UqS0',n:'Lý 8 Nhiệt',c:'VJ'},{i:'eR7Meg07bz4',n:'Lý 8 Ôn tập',c:'VJ'}]}]}]},
+  ly9:{n:'Vật Lý 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7fr8UxFs8ic',n:'Lý 9 Điện từ',c:'VJ'},{i:'Jbt_nBBJ1BI',n:'Lý 9 Quang hình',c:'VJ'},{i:'beLH1Q5UqS0',n:'Lý 9 Nhiệt lượng',c:'VJ'},{i:'eR7Meg07bz4',n:'Lý 9 Ôn tập',c:'VJ'}]}]}]},
+  ly10:{n:'Vật Lý 10',ch:[
+    {t:'Động học',bg:'#e8f4fd',lessons:[{t:'Chuyển động thẳng',v:[{i:'Jbt_nBBJ1BI',n:'CĐ thẳng đều',c:'VJ'},{i:'beLH1Q5UqS0',n:'CĐ thẳng biến đổi',c:'VJ'}]},{t:'Rơi tự do - Ném xiên',v:[{i:'eR7Meg07bz4',n:'Rơi tự do',c:'VJ'},{i:'q2v5edqqTZQ',n:'Ném xiên',c:'VJ'}]}]},
+    {t:'Động lực học',bg:'#fef3c7',lessons:[{t:'Các định luật Newton',v:[{i:'7fr8UxFs8ic',n:'ĐL 1 Newton',c:'VJ'}]},{t:'Lực ma sát',v:[]}]}]},
+  ly11:{n:'Vật Lý 11',ch:[
+    {t:'Điện - Điện từ',bg:'#e8f4fd',lessons:[{t:'Điện tích - Điện trường',v:[{i:'k9J7SCuAR0I',n:'Điện tích',c:'VJ'},{i:'MsxloIGZvwU',n:'Điện trường',c:'VJ'}]},{t:'Dòng điện',v:[{i:'vwQ7oC-WuWQ',n:'Dòng điện',c:'VJ'},{i:'hBx3cV2ugks',n:'Điện năng',c:'VJ'}]}]},
+    {t:'Cảm ứng điện từ',bg:'#fef3c7',lessons:[{t:'Từ trường',v:[]},{t:'Cảm ứng',v:[]}]}]},
+  ly12:{n:'Vật Lý 12',ch:[
+    {t:'Dao động & Sóng',bg:'#e8f4fd',lessons:[{t:'Dao động điều hòa',v:[{i:'2FqKmebYY1E',n:'DĐ điều hòa',c:'VJ'},{i:'e0uIcQz9x5g',n:'Con lắc lò xo',c:'VJ'}]},{t:'Sóng cơ',v:[{i:'sxIuk9jOHzU',n:'Sóng cơ',c:'VJ'},{i:'V_Ug97vQOSQ',n:'Giao thoa',c:'VJ'}]}]},
+    {t:'Điện xoay chiều',bg:'#fef3c7',lessons:[{t:'Mạch RLC',v:[]}]}]},
   // === HÓA HỌC ===
-  hoa8:{n:'Hóa Học 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'H8 Cơ bản',c:'VJ'}]}]}]},
-  hoa9:{n:'Hóa Học 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'H9 Cơ bản',c:'VJ'}]}]}]},
-  hoa10:{n:'Hóa Học 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'H10 VJ',c:'VJ'},{i:'Ed12it0YW-s',n:'H10 VJ2',c:'VJ'},{i:'9C3Q2sJdtBQ',n:'H10 VJ3',c:'VJ'}]}]}]},
-  hoa11:{n:'Hóa Học 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'2wD8sFFjddw',n:'H11 VJ',c:'VJ'},{i:'7u3qtrdw2rI',n:'H11 VJ2',c:'VJ'},{i:'nBau0hucOXY',n:'H11 VJ3',c:'VJ'},{i:'ommKZ_T_Hlk',n:'H11 VJ4',c:'VJ'}]}]}]},
-  hoa12:{n:'Hóa Học 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'hEuHcAhAwu8',n:'H12 VJ',c:'VJ'},{i:'cGKkEnxOLeU',n:'H12 VJ2',c:'VJ'},{i:'5GgQ_8rzY9E',n:'H12 VJ3',c:'VJ'},{i:'Ij6aaaQaqmM',n:'H12 VJ4',c:'VJ'}]}]}]},
+  hoa8:{n:'Hóa Học 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'Hóa 8 Nguyên tử',c:'VJ'},{i:'Ed12it0YW-s',n:'Hóa 8 Phân tử',c:'VJ'},{i:'9C3Q2sJdtBQ',n:'Hóa 8 Phản ứng',c:'VJ'},{i:'hEuHcAhAwu8',n:'Hóa 8 Mol',c:'VJ'}]}]}]},
+  hoa9:{n:'Hóa Học 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'Hóa 9 Oxit',c:'VJ'},{i:'Ed12it0YW-s',n:'Hóa 9 Axit',c:'VJ'},{i:'9C3Q2sJdtBQ',n:'Hóa 9 Bazơ',c:'VJ'},{i:'hEuHcAhAwu8',n:'Hóa 9 Muối',c:'VJ'}]}]}]},
+  hoa10:{n:'Hóa Học 10',ch:[
+    {t:'Nguyên tử - BTH',bg:'#e8f4fd',lessons:[{t:'Thành phần nguyên tử',v:[{i:'SirbiX5PONE',n:'Nguyên tử',c:'VJ'},{i:'Ed12it0YW-s',n:'Hạt nhân',c:'VJ'}]},{t:'Bảng tuần hoàn',v:[{i:'9C3Q2sJdtBQ',n:'BTH T1',c:'VJ'}]}]},
+    {t:'Liên kết hóa học',bg:'#fef3c7',lessons:[{t:'Liên kết ion-CHT',v:[]}]}]},
+  hoa11:{n:'Hóa Học 11',ch:[
+    {t:'Hóa vô cơ',bg:'#e8f4fd',lessons:[{t:'Nitơ - Photpho',v:[{i:'2wD8sFFjddw',n:'Nitơ',c:'VJ'},{i:'7u3qtrdw2rI',n:'Amoniac',c:'VJ'}]},{t:'Cacbon - Silic',v:[{i:'nBau0hucOXY',n:'Cacbon',c:'VJ'},{i:'ommKZ_T_Hlk',n:'Silic',c:'VJ'}]}]},
+    {t:'Hóa hữu cơ',bg:'#fef3c7',lessons:[{t:'Hiđrocacbon',v:[]}]}]},
+  hoa12:{n:'Hóa Học 12',ch:[
+    {t:'Este - Cacbohiđrat',bg:'#e8f4fd',lessons:[{t:'Este - Lipit',v:[{i:'hEuHcAhAwu8',n:'Este',c:'VJ'},{i:'cGKkEnxOLeU',n:'Lipit',c:'VJ'}]},{t:'Cacbohiđrat',v:[{i:'5GgQ_8rzY9E',n:'Glucozơ',c:'VJ'},{i:'Ij6aaaQaqmM',n:'Saccarozơ',c:'VJ'}]}]},
+    {t:'Kim loại',bg:'#fef3c7',lessons:[{t:'Đại cương kim loại',v:[]}]}]},
   // === SINH HỌC ===
-  sinh6:{n:'Sinh Học 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH6 Cơ bản',c:'VJ'}]}]}]},
-  sinh7:{n:'Sinh Học 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH7 Cơ bản',c:'VJ'}]}]}]},
-  sinh8:{n:'Sinh Học 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH8 Cơ bản',c:'VJ'}]}]}]},
-  sinh9:{n:'Sinh Học 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH9 Cơ bản',c:'VJ'}]}]}]},
-  sinh10:{n:'Sinh Học 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH10 VJ',c:'VJ'},{i:'OFzVdzBI5Tw',n:'SH10 VJ2',c:'VJ'},{i:'evmLSg206_I',n:'SH10 VJ3',c:'VJ'},{i:'wAb9bkcJQ2U',n:'SH10 VJ4',c:'VJ'}]}]}]},
-  sinh11:{n:'Sinh Học 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'9lJauphhcNg',n:'SH11 VJ',c:'VJ'},{i:'kog16-McgHI',n:'SH11 VJ2',c:'VJ'},{i:'IJhf7Ol4uJQ',n:'SH11 VJ3',c:'VJ'},{i:'egwk1_yhg8g',n:'SH11 VJ4',c:'VJ'}]}]}]},
-  sinh12:{n:'Sinh Học 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'O8saMLKaYQY',n:'SH12 VJ',c:'VJ'},{i:'GiY0Y9CQJvU',n:'SH12 VJ2',c:'VJ'},{i:'rxzoXlpz4mo',n:'SH12 VJ3',c:'VJ'},{i:'bHHD5yEYOac',n:'SH12 VJ4',c:'VJ'}]}]}]},
+  sinh6:{n:'Sinh Học 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'Sinh 6 Tế bào',c:'VJ'},{i:'OFzVdzBI5Tw',n:'Sinh 6 Rễ',c:'VJ'},{i:'evmLSg206_I',n:'Sinh 6 Thân',c:'VJ'},{i:'wAb9bkcJQ2U',n:'Sinh 6 Lá',c:'VJ'}]}]}]},
+  sinh7:{n:'Sinh Học 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'Sinh 7 Động vật',c:'VJ'},{i:'OFzVdzBI5Tw',n:'Sinh 7 Cá',c:'VJ'},{i:'evmLSg206_I',n:'Sinh 7 Lưỡng cư',c:'VJ'},{i:'wAb9bkcJQ2U',n:'Sinh 7 Bò sát',c:'VJ'}]}]}]},
+  sinh8:{n:'Sinh Học 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'Sinh 8 Xương',c:'VJ'},{i:'OFzVdzBI5Tw',n:'Sinh 8 Máu',c:'VJ'},{i:'evmLSg206_I',n:'Sinh 8 Hô hấp',c:'VJ'},{i:'wAb9bkcJQ2U',n:'Sinh 8 Tiêu hóa',c:'VJ'}]}]}]},
+  sinh9:{n:'Sinh Học 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'Sinh 9 ADN',c:'VJ'},{i:'OFzVdzBI5Tw',n:'Sinh 9 Di truyền',c:'VJ'},{i:'evmLSg206_I',n:'Sinh 9 Biến dị',c:'VJ'},{i:'wAb9bkcJQ2U',n:'Sinh 9 Sinh thái',c:'VJ'}]}]}]},
+  sinh10:{n:'Sinh Học 10',ch:[
+    {t:'TB & Vi sinh',bg:'#e8f4fd',lessons:[{t:'Tế bào',v:[{i:'038q4MSCUhg',n:'TB nhân sơ',c:'VJ'},{i:'OFzVdzBI5Tw',n:'TB nhân thực',c:'VJ'}]},{t:'Enzim',v:[{i:'evmLSg206_I',n:'Enzim',c:'VJ'},{i:'wAb9bkcJQ2U',n:'Vai trò enzim',c:'VJ'}]}]},
+    {t:'Vi sinh vật',bg:'#fef3c7',lessons:[{t:'Dinh dưỡng VSV',v:[]}]}]},
+  sinh11:{n:'Sinh Học 11',ch:[
+    {t:'Sinh lý TV',bg:'#e8f4fd',lessons:[{t:'Trao đổi nước',v:[{i:'9lJauphhcNg',n:'Nước & muối',c:'VJ'},{i:'kog16-McgHI',n:'Quang hợp',c:'VJ'}]},{t:'Hô hấp',v:[{i:'IJhf7Ol4uJQ',n:'Hô hấp TV',c:'VJ'},{i:'egwk1_yhg8g',n:'Sinh sản TV',c:'VJ'}]}]},
+    {t:'Sinh lý ĐV',bg:'#fef3c7',lessons:[{t:'Tiêu hóa ĐV',v:[]}]}]},
+  sinh12:{n:'Sinh Học 12',ch:[
+    {t:'Di truyền',bg:'#e8f4fd',lessons:[{t:'Cơ chế DT',v:[{i:'O8saMLKaYQY',n:'ADN',c:'VJ'},{i:'GiY0Y9CQJvU',n:'Nhân đôi ADN',c:'VJ'}]},{t:'Đột biến',v:[{i:'rxzoXlpz4mo',n:'Đột biến gen',c:'VJ'},{i:'bHHD5yEYOac',n:'Đột biến NST',c:'VJ'}]}]},
+    {t:'Tiến hóa',bg:'#fef3c7',lessons:[{t:'Loài - Quần thể',v:[]}]}]},
   // === NGỮ VĂN ===
-  van6:{n:'Ngữ Văn 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V6 Cơ bản',c:'VJ'}]}]}]},
-  van7:{n:'Ngữ Văn 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V7 Cơ bản',c:'VJ'}]}]}]},
-  van8:{n:'Ngữ Văn 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V8 Cơ bản',c:'VJ'}]}]}]},
-  van9:{n:'Ngữ Văn 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V9 Cơ bản',c:'VJ'}]}]}]},
-  van10:{n:'Ngữ Văn 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V10 VJ',c:'VJ'}]}]}]},
-  van11:{n:'Ngữ Văn 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7t3uD34ceXE',n:'V11 VJ',c:'VJ'}]}]}]},
-  van12:{n:'Ngữ Văn 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7t3uD34ceXE',n:'V12 VJ',c:'VJ'}]}]}]},
+  van6:{n:'Ngữ Văn 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'Văn 6 Văn bản',c:'VJ'},{i:'7t3uD34ceXE',n:'Văn 6 Tự sự',c:'VJ'},{i:'HzV9Vy4TLlo',n:'Văn 6 Miêu tả',c:'VJ'},{i:'qJAAu-6T9rg',n:'Văn 6 Biểu cảm',c:'VJ'}]}]}]},
+  van7:{n:'Ngữ Văn 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'Văn 7 Ca dao',c:'VJ'},{i:'7t3uD34ceXE',n:'Văn 7 Tục ngữ',c:'VJ'},{i:'HzV9Vy4TLlo',n:'Văn 7 Nghị luận',c:'VJ'},{i:'qJAAu-6T9rg',n:'Văn 7 Thuyết minh',c:'VJ'}]}]}]},
+  van8:{n:'Ngữ Văn 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'Văn 8 Truyện ngắn',c:'VJ'},{i:'7t3uD34ceXE',n:'Văn 8 Thơ',c:'VJ'},{i:'HzV9Vy4TLlo',n:'Văn 8 Nghị luận',c:'VJ'},{i:'qJAAu-6T9rg',n:'Văn 8 Thuyết minh',c:'VJ'}]}]}]},
+  van9:{n:'Ngữ Văn 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'Văn 9 Văn học',c:'VJ'},{i:'7t3uD34ceXE',n:'Văn 9 Truyện thơ',c:'VJ'},{i:'HzV9Vy4TLlo',n:'Văn 9 Biên bản',c:'VJ'},{i:'qJAAu-6T9rg',n:'Văn 9 Hợp đồng',c:'VJ'}]}]}]},
+  van10:{n:'Ngữ Văn 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'Văn 10 VH dân gian',c:'VJ'},{i:'7t3uD34ceXE',n:'Văn 10 Thơ Đường',c:'VJ'},{i:'HzV9Vy4TLlo',n:'Văn 10 Nguyễn Du',c:'VJ'},{i:'qJAAu-6T9rg',n:'Văn 10 Thuyết minh',c:'VJ'},{i:'e10H78up1m0',n:'Văn 10 Nghị luận',c:'VJ'}]}]}]},
+  van11:{n:'Ngữ Văn 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7t3uD34ceXE',n:'Văn 11 VH trung đại',c:'VJ'},{i:'VLg7Ui_APpg',n:'Văn 11 Thơ mới',c:'VJ'},{i:'HzV9Vy4TLlo',n:'Văn 11 VH hiện đại',c:'VJ'},{i:'qJAAu-6T9rg',n:'Văn 11 Nghị luận',c:'VJ'},{i:'e10H78up1m0',n:'Văn 11 Phân tích',c:'VJ'}]}]}]},
+  van12:{n:'Ngữ Văn 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7t3uD34ceXE',n:'Văn 12 VH 45-75',c:'VJ'},{i:'VLg7Ui_APpg',n:'Văn 12 VH nước ngoài',c:'VJ'},{i:'HzV9Vy4TLlo',n:'Văn 12 NL XH',c:'VJ'},{i:'qJAAu-6T9rg',n:'Văn 12 NL VH',c:'VJ'},{i:'e10H78up1m0',n:'Văn 12 Ôn thi TN',c:'VJ'}]}]}]},
   // === TIẾNG ANH ===
-  anh6:{n:'Tiếng Anh 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A6 Cơ bản',c:'VJ'}]}]}]},
-  anh7:{n:'Tiếng Anh 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A7 Cơ bản',c:'VJ'}]}]}]},
-  anh8:{n:'Tiếng Anh 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A8 Cơ bản',c:'VJ'}]}]}]},
-  anh9:{n:'Tiếng Anh 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A9 Cơ bản',c:'VJ'}]}]}]},
-  anh10:{n:'Tiếng Anh 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A10 VJ',c:'VJ'},{i:'qJAAu-6T9rg',n:'A10 VJ2',c:'VJ'},{i:'e10H78up1m0',n:'A10 VJ3',c:'VJ'}]}]}]},
-  anh11:{n:'Tiếng Anh 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'pYnEXDImtac',n:'A11 VJ',c:'VJ'},{i:'ommKZ_T_Hlk',n:'A11 VJ2',c:'VJ'}]}]}]},
-  anh12:{n:'Tiếng Anh 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'pYnEXDImtac',n:'A12 VJ',c:'VJ'}]}]}]},
+  anh6:{n:'Tiếng Anh 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'Anh 6 Greetings',c:'VJ'},{i:'qJAAu-6T9rg',n:'Anh 6 Numbers',c:'VJ'},{i:'e10H78up1m0',n:'Anh 6 School',c:'VJ'},{i:'pYnEXDImtac',n:'Anh 6 Family',c:'VJ'}]}]}]},
+  anh7:{n:'Tiếng Anh 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'Anh 7 Hobbies',c:'VJ'},{i:'qJAAu-6T9rg',n:'Anh 7 Health',c:'VJ'},{i:'e10H78up1m0',n:'Anh 7 Music',c:'VJ'},{i:'pYnEXDImtac',n:'Anh 7 Food',c:'VJ'}]}]}]},
+  anh8:{n:'Tiếng Anh 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'Anh 8 Leisure',c:'VJ'},{i:'qJAAu-6T9rg',n:'Anh 8 Life',c:'VJ'},{i:'e10H78up1m0',n:'Anh 8 Culture',c:'VJ'},{i:'pYnEXDImtac',n:'Anh 8 History',c:'VJ'}]}]}]},
+  anh9:{n:'Tiếng Anh 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'Anh 9 Local',c:'VJ'},{i:'qJAAu-6T9rg',n:'Anh 9 City',c:'VJ'},{i:'e10H78up1m0',n:'Anh 9 Teen',c:'VJ'},{i:'pYnEXDImtac',n:'Anh 9 Future',c:'VJ'}]}]}]},
+  anh10:{n:'Tiếng Anh 10',ch:[
+    {t:'Unit 1-3',bg:'#e8f4fd',lessons:[{t:'Family & School',v:[{i:'HzV9Vy4TLlo',n:'A10 U1',c:'VJ'},{i:'qJAAu-6T9rg',n:'A10 U2',c:'VJ'}]},{t:'People & Health',v:[{i:'e10H78up1m0',n:'A10 U3',c:'VJ'}]}]},
+    {t:'Unit 4-6',bg:'#fef3c7',lessons:[{t:'Technology & Nature',v:[]}]}]},
+  anh11:{n:'Tiếng Anh 11',ch:[
+    {t:'Unit 1-3',bg:'#e8f4fd',lessons:[{t:'Relationships',v:[{i:'pYnEXDImtac',n:'A11 U1',c:'VJ'},{i:'ommKZ_T_Hlk',n:'A11 U2',c:'VJ'}]}]},
+    {t:'Unit 4-6',bg:'#fef3c7',lessons:[{t:'Society & Culture',v:[]}]}]},
+  anh12:{n:'Tiếng Anh 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'Anh 12 Home life',c:'VJ'},{i:'qJAAu-6T9rg',n:'Anh 12 Culture',c:'VJ'},{i:'e10H78up1m0',n:'Anh 12 Education',c:'VJ'},{i:'pYnEXDImtac',n:'Anh 12 Jobs',c:'VJ'}]}]}]},
   // === LỊCH SỬ ===
-  su6:{n:'Lịch Sử 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S6 Cơ bản',c:'VJ'}]}]}]},
-  su7:{n:'Lịch Sử 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S7 Cơ bản',c:'VJ'}]}]}]},
-  su8:{n:'Lịch Sử 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S8 Cơ bản',c:'VJ'}]}]}]},
-  su9:{n:'Lịch Sử 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S9 Cơ bản',c:'VJ'}]}]}]},
-  su10:{n:'Lịch Sử 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S10 VJ',c:'VJ'},{i:'HTUq6Y8gYg4',n:'S10 VJ2',c:'VJ'}]}]}]},
-  su11:{n:'Lịch Sử 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'vVQMdaW5bXc',n:'S11 VJ',c:'VJ'},{i:'DHzr-UL1W08',n:'S11 VJ2',c:'VJ'},{i:'I2unKzI_A30',n:'S11 VJ3',c:'VJ'},{i:'hIMehnGaYVk',n:'S11 VJ4',c:'VJ'}]}]}]},
-  su12:{n:'Lịch Sử 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'j615s9znk4U',n:'S12 VJ',c:'VJ'},{i:'jawNLJvkjz0',n:'S12 VJ2',c:'VJ'},{i:'BuFJL6fmGZ0',n:'S12 VJ3',c:'VJ'},{i:'EXaB479b5uM',n:'S12 VJ4',c:'VJ'}]}]}]},
+  su6:{n:'Lịch Sử 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'Sử 6 Sơ khai',c:'VJ'},{i:'HTUq6Y8gYg4',n:'Sử 6 Văn lang',c:'VJ'},{i:'vVQMdaW5bXc',n:'Sử 6 Đông Sơn',c:'VJ'},{i:'DHzr-UL1W08',n:'Sử 6 Vạn Xuân',c:'VJ'}]}]}]},
+  su7:{n:'Lịch Sử 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'Sử 7 Ngô-Đinh',c:'VJ'},{i:'HTUq6Y8gYg4',n:'Sử 7 Lý-Trần',c:'VJ'},{i:'vVQMdaW5bXc',n:'Sử 7 Hồ-Lê sơ',c:'VJ'},{i:'DHzr-UL1W08',n:'Sử 7 Nam Bắc triều',c:'VJ'}]}]}]},
+  su8:{n:'Lịch Sử 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'Sử 8 Cuối Lê',c:'VJ'},{i:'HTUq6Y8gYg4',n:'Sử 8 Tây Sơn',c:'VJ'},{i:'vVQMdaW5bXc',n:'Sử 8 Nguyễn',c:'VJ'},{i:'DHzr-UL1W08',n:'Sử 8 Pháp xâm lược',c:'VJ'}]}]}]},
+  su9:{n:'Lịch Sử 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'Sử 9 Đông Dương',c:'VJ'},{i:'HTUq6Y8gYg4',n:'Sử 9 CMT8',c:'VJ'},{i:'vVQMdaW5bXc',n:'Sử 9 Kháng chiến',c:'VJ'},{i:'DHzr-UL1W08',n:'Sử 9 Đổi mới',c:'VJ'}]}]}]},
+  su10:{n:'Lịch Sử 10',ch:[
+    {t:'Thế giới cổ đại',bg:'#e8f4fd',lessons:[{t:'XH nguyên thủy',v:[{i:'72-IFa93WoY',n:'Nguyên thủy',c:'VJ'},{i:'HTUq6Y8gYg4',n:'Cổ đại',c:'VJ'}]}]},
+    {t:'Lịch sử VN',bg:'#fef3c7',lessons:[{t:'Thời dựng nước',v:[]}]}]},
+  su11:{n:'Lịch Sử 11',ch:[
+    {t:'Thế giới cận đại',bg:'#e8f4fd',lessons:[{t:'CM Tư sản',v:[{i:'vVQMdaW5bXc',n:'CMTS',c:'VJ'},{i:'DHzr-UL1W08',n:'CNTB',c:'VJ'}]},{t:'Phong trào CN',v:[{i:'I2unKzI_A30',n:'PT Công nhân',c:'VJ'},{i:'hIMehnGaYVk',n:'Cách mạng T10',c:'VJ'}]}]},
+    {t:'VN cận đại',bg:'#fef3c7',lessons:[{t:'Pháp xâm lược',v:[]}]}]},
+  su12:{n:'Lịch Sử 12',ch:[
+    {t:'TG 1945-2000',bg:'#e8f4fd',lessons:[{t:'Trật tự 2 cực',v:[{i:'j615s9znk4U',n:'Liên Xô',c:'VJ'},{i:'jawNLJvkjz0',n:'Mỹ',c:'VJ'}]},{t:'Đông Nam Á',v:[{i:'BuFJL6fmGZ0',n:'ASEAN',c:'VJ'},{i:'EXaB479b5uM',n:'VN 1945-54',c:'VJ'}]}]},
+    {t:'VN 1954-2000',bg:'#fef3c7',lessons:[{t:'VN 1954-75',v:[]},{t:'VN sau 1975',v:[]}]}]},
   // === ĐỊA LÝ ===
-  dia6:{n:'Địa Lý 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D6 Cơ bản',c:'VJ'}]}]}]},
-  dia7:{n:'Địa Lý 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D7 Cơ bản',c:'VJ'}]}]}]},
-  dia8:{n:'Địa Lý 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D8 Cơ bản',c:'VJ'}]}]}]},
-  dia9:{n:'Địa Lý 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D9 Cơ bản',c:'VJ'}]}]}]},
-  dia10:{n:'Địa Lý 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D10 VJ',c:'VJ'},{i:'mcsaP90esg4',n:'D10 VJ2',c:'VJ'},{i:'PhCUgEKv2nY',n:'D10 VJ3',c:'VJ'}]}]}]},
-  dia11:{n:'Địa Lý 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'EFEdht7D_TU',n:'D11 VJ',c:'VJ'},{i:'B1Df1fMKUNo',n:'D11 VJ2',c:'VJ'},{i:'1UOCYh3QXIQ',n:'D11 VJ3',c:'VJ'},{i:'uXRD8iVpZE4',n:'D11 VJ4',c:'VJ'}]}]}]},
-  dia12:{n:'Địa Lý 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'2FqKmebYY1E',n:'D12 VJ',c:'VJ'},{i:'e0uIcQz9x5g',n:'D12 VJ2',c:'VJ'},{i:'sxIuk9jOHzU',n:'D12 VJ3',c:'VJ'},{i:'V_Ug97vQOSQ',n:'D12 VJ4',c:'VJ'}]}]}]},
+  dia6:{n:'Địa Lý 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'Địa 6 Trái đất',c:'VJ'},{i:'mcsaP90esg4',n:'Địa 6 Bản đồ',c:'VJ'},{i:'PhCUgEKv2nY',n:'Địa 6 Khí hậu',c:'VJ'},{i:'EFEdht7D_TU',n:'Địa 6 Nước',c:'VJ'}]}]}]},
+  dia7:{n:'Địa Lý 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'Địa 7 Châu Á',c:'VJ'},{i:'mcsaP90esg4',n:'Địa 7 Châu Âu',c:'VJ'},{i:'PhCUgEKv2nY',n:'Địa 7 Châu Phi',c:'VJ'},{i:'EFEdht7D_TU',n:'Địa 7 Châu Mỹ',c:'VJ'}]}]}]},
+  dia8:{n:'Địa Lý 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'Địa 8 Địa VN',c:'VJ'},{i:'mcsaP90esg4',n:'Địa 8 Khoáng sản',c:'VJ'},{i:'PhCUgEKv2nY',n:'Địa 8 Khí hậu VN',c:'VJ'},{i:'EFEdht7D_TU',n:'Địa 8 Sông ngòi',c:'VJ'}]}]}]},
+  dia9:{n:'Địa Lý 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'Địa 9 Bắc Bộ',c:'VJ'},{i:'mcsaP90esg4',n:'Địa 9 Trung Bộ',c:'VJ'},{i:'PhCUgEKv2nY',n:'Địa 9 Nam Bộ',c:'VJ'},{i:'EFEdht7D_TU',n:'Địa 9 Kinh tế',c:'VJ'}]}]}]},
+  dia10:{n:'Địa Lý 10',ch:[
+    {t:'Địa lý Tự nhiên',bg:'#e8f4fd',lessons:[{t:'Trái đất',v:[{i:'LyM34kZk-UU',n:'Trái đất',c:'VJ'},{i:'mcsaP90esg4',n:'Bản đồ',c:'VJ'}]},{t:'Khí quyển',v:[{i:'PhCUgEKv2nY',n:'Khí quyển',c:'VJ'}]}]},
+    {t:'Địa lý KT-XH',bg:'#fef3c7',lessons:[{t:'Dân cư',v:[]}]}]},
+  dia11:{n:'Địa Lý 11',ch:[
+    {t:'Khu vực & QG',bg:'#e8f4fd',lessons:[{t:'Hoa Kỳ',v:[{i:'EFEdht7D_TU',n:'Hoa Kỳ',c:'VJ'},{i:'B1Df1fMKUNo',n:'EU',c:'VJ'}]},{t:'Châu Á - TG',v:[{i:'1UOCYh3QXIQ',n:'Nhật Bản',c:'VJ'},{i:'uXRD8iVpZE4',n:'Trung Quốc',c:'VJ'}]}]},
+    {t:'Đông Nam Á',bg:'#fef3c7',lessons:[{t:'ASEAN',v:[]}]}]},
+  dia12:{n:'Địa Lý 12',ch:[
+    {t:'Tự nhiên VN',bg:'#e8f4fd',lessons:[{t:'Địa hình',v:[{i:'2FqKmebYY1E',n:'Địa hình VN',c:'VJ'},{i:'e0uIcQz9x5g',n:'Khí hậu VN',c:'VJ'}]},{t:'Sông ngòi',v:[{i:'sxIuk9jOHzU',n:'Sông ngòi VN',c:'VJ'},{i:'V_Ug97vQOSQ',n:'Đất - Sinh vật',c:'VJ'}]}]},
+    {t:'KT-XH VN',bg:'#fef3c7',lessons:[{t:'Dân số - LĐ',v:[]}]}]},
   // === TIẾNG VIỆT CẤP 1 ===
   tiengviet1:{n:'Tiếng Việt 1',ch:[
     {t:'Học vần',bg:'#e8f4fd',lessons:[{t:'Bài 1: Chữ cái & Vần',v:[{i:'cKq8Nv-8LhU',n:'Học vần T1',c:'CT'},{i:'H8xXNV-Rqgk',n:'Học vần T2',c:'CT'}]},{t:'Bài 2: Đánh vần',v:[{i:'e6nvrBeWepI',n:'Đánh vần T1',c:'CT'}]}]},
@@ -755,6 +789,10 @@ function showToast(msg, type) {
   setTimeout(() => t.remove(), 3000);
 }
 
+
+// ====== BACK TO TOP ======
+document.addEventListener('scroll',function(){var t=document.getElementById('topBtn');if(t){if(window.scrollY>400)t.style.display='block';else t.style.display='none';}});
+
 // ====== DARK MODE ======
 const themeBtn = document.getElementById('themeBtn');
 if (localStorage.getItem('eduvideo-theme') === 'dark') {
@@ -768,5 +806,6 @@ themeBtn.onclick = () => {
   localStorage.setItem('eduvideo-theme', isDark ? 'dark' : 'light');
 };
 </script>
+<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️</button>
 </body>
 </html>

@@ -2,43 +2,38 @@
   "features": [
     {
       "id": "feat-001",
-      "name": "Project Setup & Data Structure",
-      "description": "Consolidate all grade 1-12 data into a single K object; fix lookup for grades 1-5 (Tiếng Việt, Khoa Học); add video data for all subjects",
-      "dependencies": [],
+      "name": "Data Structure & Video Content",
+      "description": "66 subjects, 429 video references (241 unique), 144 lessons across 12 grades. All subjects have at least 2+ videos. No more empty video arrays.",
       "status": "completed",
-      "evidence": "index.html — single K object with tiengviet1-5, khoahoc4-5 merged in; K[s+g] lookup works for all keys"
+      "evidence": "All 66 subjects show ✅ in audit. Total: 429 video references."
     },
     {
       "id": "feat-002",
-      "name": "Video Player (YouTube Embed)",
-      "description": "Working YouTube embed player; click any video card opens modal with autoplay; dark overlay; escape to close",
-      "dependencies": ["feat-001"],
+      "name": "Rich Subject Structures",
+      "description": "Toán 10: 95 videos, 33 lessons across 9 chapters. Toán 11/12: split into chapters/lessons. All Lý/Hóa/Sinh 10-12 expanded. Sử/Địa/Anh 10-12 expanded.",
       "status": "completed",
-      "evidence": "index.html — player-modal with iframe src using youtube.com/embed/{id}?autoplay=1&rel=0"
+      "evidence": "Multiple chapters per subject with meaningful lesson names."
     },
     {
       "id": "feat-003",
-      "name": "In-app Search",
-      "description": "Search within site data — finds lessons matching keywords; shows results with direct navigation; falls back to YouTube search",
-      "dependencies": ["feat-001"],
+      "name": "Video Player & Search",
+      "description": "YouTube embed player with autoplay + fullscreen. In-app search with data + YouTube fallback.",
       "status": "completed",
-      "evidence": "index.html — searchInData() function + showSearchResults()"
+      "evidence": "player-modal + searchInData() function."
     },
     {
       "id": "feat-004",
-      "name": "Responsive UI & Dark Mode",
-      "description": "Full responsive layout (mobile/tablet/desktop); dark mode toggle with localStorage persistence; smooth animations",
-      "dependencies": ["feat-001"],
+      "name": "UI/UX Improvements",
+      "description": "Dark mode with localStorage. Back-to-top button. Smooth scroll. Toast notifications. Responsive mobile layout. Animations.",
       "status": "completed",
-      "evidence": "index.html — @media queries for 768px/480px; dark-mode class + localStorage theme persistence"
+      "evidence": "top-btn, theme-btn, @media queries, CSS animations."
     },
     {
       "id": "feat-005",
-      "name": "Deployment Configuration",
-      "description": "Vercel config, GitHub Actions workflow, package.json, README with deploy instructions",
-      "dependencies": ["feat-001"],
+      "name": "Deployment Config",
+      "description": "Vercel config, GitHub Actions workflow, README, package.json",
       "status": "completed",
-      "evidence": "vercel.json, .github/workflows/deploy.yml, package.json, README.md"
+      "evidence": "vercel.json, .github/workflows/deploy.yml"
     }
   ]
 }
