@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduVideo - Học Online qua Video cho Lớp 1-12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#f0f5ff;color:#1e293b;line-height:1.6;transition:background .4s}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+/* HEADER */
+header{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100}
+.header-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-icon{font-size:28px}
+.logo-text{font-size:22px;font-weight:800;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+/* HERO */
+.hero{background:linear-gradient(135deg,#2563eb,#1d4ed8 40%,#7c3aed 100%);color:#fff;padding:56px 0 44px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero h1{font-size:40px;font-weight:800;margin-bottom:10px;position:relative;z-index:1}
+.hero p{font-size:17px;opacity:.92;max-width:520px;margin:0 auto 24px;position:relative;z-index:1}
+.hero-search{display:flex;max-width:500px;margin:0 auto;background:#fff;border-radius:50px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2);position:relative;z-index:1}
+.hero-search input{flex:1;border:none;padding:16px 24px;font-size:15px;outline:none;font-family:inherit}
+.hero-search button{background:#1d4ed8;color:#fff;border:none;padding:16px 32px;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s}
+.hero-search button:hover{background:#1e40af}
+/* GRADE BUTTONS */
+.grade-buttons{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin:32px auto;max-width:900px}
+.grade-btn{display:flex;flex-direction:column;align-items:center;padding:16px 8px;border-radius:16px;border:2px solid #e2e8f0;background:#fff;cursor:pointer;transition:all .25s;font-family:inherit;border-top:4px solid #2563eb;position:relative;overflow:hidden}
+.grade-btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,235,.12);border-color:#2563eb}
+.grade-btn.active{background:#2563eb;border-color:#2563eb;color:#fff;transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,235,.2)}
+.grade-btn .grade-label{font-size:18px;font-weight:700}
+.grade-btn .grade-range{font-size:11px;opacity:.7;margin-top:2px}
+.grade-btn.active .grade-range{opacity:.9}
+/* SUBJECT TABS */
+.subject-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}
+.subject-btn{padding:12px 24px;border:2px solid #e2e8f0;background:#fff;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.subject-btn:hover{border-color:#2563eb;color:#2563eb}
+.subject-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+/* CHAPTER GRID */
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.chapter-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(37,99,235,.06);cursor:pointer;transition:all .3s;border:1px solid #e2e8f0}
+.chapter-card:hover{box-shadow:0 8px 32px rgba(37,99,235,.12);transform:translateY(-3px);border-color:#2563eb}
+.chapter-card .chapter-num{font-size:13px;font-weight:600;color:#2563eb;text-transform:uppercase;letter-spacing:1px}
+.chapter-card h3{font-size:17px;margin:8px 0 4px;font-weight:700}
+.badge-ready{display:inline-block;padding:3px 10px;background:#d1fae5;color:#059669;border-radius:6px;font-size:12px;margin-top:8px}
+.badge-updating{display:inline-block;padding:3px 10px;background:#fef3c7;color:#d97706;border-radius:6px;font-size:12px;margin-top:8px}
+/* LESSON GRID */
+.lesson-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:12px 0}
+.lesson-card{background:#fff;border-radius:12px;padding:16px;cursor:pointer;border:1px solid #e2e8f0;transition:all .25s;text-align:center}
+.lesson-card:hover{box-shadow:0 8px 24px rgba(37,99,235,.12);transform:translateY(-2px);border-color:#2563eb}
+.lesson-card.active{background:#2563eb;color:#fff;border-color:#2563eb}
+.lesson-card.active .l-icon{filter:brightness(10)}
+.lesson-card .l-icon{font-size:32px;margin-bottom:6px}
+.lesson-card h4{font-size:14px;font-weight:600}
+/* VIDEO GRID */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.video-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(37,99,235,.06);cursor:pointer;transition:all .3s;border:1px solid #e2e8f0}
+.video-card:hover{box-shadow:0 8px 32px rgba(37,99,235,.12);transform:translateY(-3px)}
+.video-card .thumb{width:100%;aspect-ratio:16/9;background:#e2e8f0;position:relative;overflow:hidden}
+.video-card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.video-card:hover .thumb img{transform:scale(1.05)}
+.video-card .thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:48px;opacity:.85;transition:opacity .2s,transform .2s}
+.video-card:hover .thumb .play{opacity:1;transform:scale(1.1)}
+.v-info{padding:16px}
+.v-info h4{font-size:15px;font-weight:600;margin-bottom:4px;line-height:1.4}
+.v-info .channel{font-size:13px;color:#64748b}
+.v-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.back-btn{padding:10px 20px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s}
+.back-btn:hover{background:#f1f5f9}
+.breadcrumb{font-size:13px;color:#64748b;margin-bottom:8px}
+.breadcrumb span{cursor:pointer}
+.breadcrumb span:hover{color:#2563eb;text-decoration:underline}
+/* PLAYER MODAL */
+.player-modal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s}
+.player-box{width:100%;max-width:960px;background:#0f172a;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:slideUp .3s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.player-top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#1e293b}
+.player-top span{color:#fff;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:12px}
+.player-top button{background:#ef4444;border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex-shrink:0;transition:background .2s}
+.player-top button:hover{background:#dc2626}
+.player-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.player-frame iframe{width:100%;height:100%;border:none}
+/* SECTIONS */
+.section{padding:40px 0;transition:opacity .3s}
+.section-title{font-size:26px;font-weight:700;margin-bottom:8px}
+.section-subtitle{color:#64748b;font-size:15px;margin-bottom:20px}
+/* STATS */
+.stats{display:flex;justify-content:center;gap:32px;background:#fff;border-radius:16px;padding:28px 20px;box-shadow:0 4px 24px rgba(37,99,235,.06);flex-wrap:wrap}
+.stat-item{text-align:center;flex:1;min-width:100px}
+.stat-num{display:block;font-size:32px;font-weight:800;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:#64748b;font-size:14px}
+/* RANDOM */
+.fun-section{text-align:center;margin-top:24px}
+.random-btn{padding:16px 36px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border:none;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .3s;box-shadow:0 4px 20px rgba(37,99,235,.3)}
+.random-btn:hover{transform:scale(1.05);box-shadow:0 8px 30px rgba(37,99,235,.4)}
+.random-btn:active{transform:scale(.95)}
+.random-result{margin-top:12px;padding:16px;background:#fff;border-radius:12px;border:1px solid #e2e8f0;display:none;max-width:500px;margin-left:auto;margin-right:auto;transition:all .3s}
+.random-result.show{display:block;animation:fadeIn .5s}
+.random-result h4{font-size:15px;font-weight:600;color:#2563eb;margin-bottom:4px}
+.random-result p{font-size:13px;color:#64748b}
+.random-result .play-now{display:inline-block;margin-top:8px;padding:8px 20px;background:#2563eb;color:#fff;border-radius:8px;text-decoration:none;font-size:13px;cursor:pointer;transition:background .2s}
+.random-result .play-now:hover{background:#1d4ed8}
+/* YOUTUBE SEARCH */
+.yt-box{display:flex;gap:12px;max-width:600px;margin-top:16px;margin-bottom:24px}
+.yt-box input{flex:1;padding:14px 20px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;outline:none;font-family:inherit;transition:border-color .2s}
+.yt-box input:focus{border-color:#2563eb}
+.btn-primary{padding:14px 28px;background:#2563eb;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s}
+.btn-primary:hover{background:#1d4ed8}
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;color:#64748b}
+.empty-state .icon{font-size:48px;margin-bottom:12px}
+.empty-state p{font-size:15px}
+/* FOOTER */
+footer{background:#1e293b;color:#94a3b8;padding:32px 0;text-align:center;font-size:14px}
+/* DARK MODE */
+.dark-mode{background:#0f172a;color:#e2e8f0}
+.dark-mode header{background:rgba(30,41,59,.95)!important;border-color:#334155}
+.dark-mode .grade-btn{background:#1e293b;border-color:#334155;color:#e2e8f0}
+.dark-mode .grade-btn.active{background:#2563eb;color:#fff}
+.dark-mode .subject-btn{background:#1e293b;border-color:#334155;color:#e2e8f0}
+.dark-mode .subject-btn.active{background:#2563eb;color:#fff}
+.dark-mode .chapter-card{background:#1e293b;border-color:#334155}
+.dark-mode .lesson-card{background:#1e293b;border-color:#334155;color:#e2e8f0}
+.dark-mode .lesson-card.active{background:#2563eb;color:#fff}
+.dark-mode .video-card{background:#1e293b;border-color:#334155}
+.dark-mode .video-card .v-info h4{color:#e2e8f0}
+.dark-mode .stats{background:#1e293b}
+.dark-mode .random-result{background:#1e293b;border-color:#334155}
+.dark-mode .hero-search input{background:#1e293b;color:#e2e8f0}
+.dark-mode .yt-box input{background:#1e293b;color:#e2e8f0;border-color:#334155}
+.dark-mode .back-btn{background:#1e293b;color:#e2e8f0;border-color:#334155}
+.dark-mode .back-btn:hover{background:#334155}
+/* THEME TOGGLE */
+.theme-btn{position:fixed;bottom:20px;right:20px;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;font-size:20px;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .3s;background:#1e293b;color:#fbbf24}
+.theme-btn:hover{transform:scale(1.1)}
+.dark-mode .theme-btn{background:#fbbf24;color:#1e293b}
+/* TOAST */
+.toast{position:fixed;bottom:80px;right:20px;background:#059669;color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:500;z-index:99999;box-shadow:0 4px 20px rgba(0,0,0,.2);animation:slideUp .3s;max-width:300px}
+.toast.error{background:#dc2626}
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero h1{font-size:28px}
+.hero p{font-size:15px}
+.hero-search{flex-direction:column;border-radius:16px}
+.hero-search button{border-radius:0}
+.grade-buttons{grid-template-columns:repeat(3,1fr);gap:8px}
+.grade-btn{padding:12px 6px}
+.grade-btn .grade-label{font-size:16px}
+.video-grid,.chapter-grid{grid-template-columns:1fr}
+.lesson-grid{grid-template-columns:repeat(2,1fr)}
+.stats{gap:16px}
+.section{padding:24px 0}
+.section-title{font-size:22px}
+.yt-box{flex-direction:column}
+.yt-box input{width:100%}
+.player-modal{padding:8px}
+.player-top{padding:10px 14px}
+.player-top span{font-size:12px}
+}
+@media(max-width:480px){
+.grade-buttons{grid-template-columns:repeat(2,1fr)}
+.lesson-grid{grid-template-columns:1fr}
+}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:3px}
+.dark-mode::-webkit-scrollbar-thumb{background:#475569}
+</style>
+</head>
+<body>
+
+<header><div class="container header-inner"><div class="logo" id="logoHome"><span class="logo-icon">📚</span><span class="logo-text">EduVideo</span></div></div></header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Học Online qua <span style="text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:8px;">Video</span> 📺</h1>
+    <p>Bài giảng hay nhất từ YouTube cho học sinh lớp 1 → 12. Chọn lớp, chọn môn, xem ngay!</p>
+    <div class="hero-search">
+      <input id="sInp" placeholder="Tìm chủ đề: Mệnh đề, Vectơ, Logarit...">
+      <button id="sBtn">🔍 Tìm</button>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="grade-buttons" id="gBtns"></div></div>
+
+<section id="subSec" class="section" style="display:none">
+  <div class="container">
+    <h2 class="section-title" id="gTitle"></h2>
+    <div class="subject-tabs" id="subTabs"></div>
+  </div>
+</section>
+
+<section id="chSec" class="section" style="display:none">
+  <div class="container">
+    <div class="breadcrumb" id="chBread"></div>
+    <div class="chapter-grid" id="chList"></div>
+  </div>
+</section>
+
+<section id="lesSec" class="section" style="display:none">
+  <div class="container">
+    <div class="breadcrumb" id="lesBread"></div>
+    <div class="lesson-grid" id="lesList"></div>
+  </div>
+</section>
+
+<section id="vidSec" class="section" style="display:none">
+  <div class="container">
+    <div class="v-header">
+      <h2 class="section-title" id="vTitle" style="font-size:18px"></h2>
+      <button class="back-btn" id="bBtnL">← Quay lại bài</button>
+    </div>
+    <div class="video-grid" id="vGrid"></div>
+  </div>
+</section>
+
+<div class="player-modal" id="pModal">
+  <div class="player-box">
+    <div class="player-top">
+      <span id="pTitle">Đang phát...</span>
+      <button id="pClose">✕</button>
+    </div>
+    <div class="player-frame" id="pFrame"></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;font-size:22px">📊 Thông tin</h2>
+    <div class="stats" id="stats"></div>
+    <div class="fun-section">
+      <button class="random-btn" id="randomBtn">🎲 Xem ngẫu nhiên một bài học</button>
+      <div id="randomResult" class="random-result"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#f8faff;padding:28px 0">
+  <div class="container">
+    <h2 class="section-title" style="font-size:18px;text-align:center">🔎 Tra cứu YouTube</h2>
+    <p style="text-align:center;color:#64748b;font-size:14px;margin-bottom:12px">Không tìm thấy video? Tìm trực tiếp trên YouTube</p>
+    <div class="yt-box" style="margin:0 auto">
+      <input id="ytInp" placeholder="VD: Toán 10 Mệnh đề VietJack...">
+      <button class="btn-primary" id="ytBtn">Tìm trên YouTube</button>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">📚 EduVideo — Bài giảng trực tuyến lớp 1-12 🧠</div></footer>
+
+<button class="theme-btn" id="themeBtn">🌙</button>
+
+<script>
+// ====== DATA: TẤT CẢ KHỐI LỚP 1→12 ======
+const K = {
+  // === TOÁN ===
+  toan1:{n:'Toán 1',ch:[{t:'Số học',bg:'#e8f4fd',lessons:[{t:'Số 0-10',v:[{i:'g8zsMRs2OcU',n:'Toán 1 Số học',c:'VJ'},{i:'cKq8Nv-8LhU',n:'Đếm số 1-10',c:'CT'}]},{t:'Phép cộng trừ',v:[{i:'PuGATCejC60',n:'Cộng trừ T1',c:'CT'}]}]},{t:'Hình học',bg:'#fef3c7',lessons:[{t:'Hình khối',v:[]}]}]},
+  toan2:{n:'Toán 2',ch:[{t:'Số học',bg:'#e8f4fd',lessons:[{t:'Phép nhân chia',v:[{i:'g8zsMRs2OcU',n:'Toán 2 Cơ bản',c:'VJ'}]}]}]},
+  toan3:{n:'Toán 3',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'g8zsMRs2OcU',n:'Toán 3 VJ',c:'VJ'}]}]}]},
+  toan4:{n:'Toán 4',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'g8zsMRs2OcU',n:'Toán 4 VJ',c:'VJ'}]}]}]},
+  toan5:{n:'Toán 5',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'g8zsMRs2OcU',n:'Toán 5 VJ',c:'VJ'}]}]}]},
+  toan6:{n:'Toán 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'nDqC-YWY2ik',n:'Toán 6 TQ',c:'TQ'}]}]}]},
+  toan7:{n:'Toán 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'V9ytA5lPm44',n:'T7 TQ T1',c:'VJ'},{i:'UI-UxbLa1mI',n:'T7 TQ T2',c:'VJ'},{i:'d1oCl3iILqI',n:'T7 TQ T3',c:'VJ'},{i:'Sbe-kPkQCH8',n:'T7 TQ T4',c:'VJ'},{i:'hf0BR4oytQU',n:'T7 TQ T5',c:'VJ'}]}]}]},
+  toan8:{n:'Toán 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VI4zsMTv4BE',n:'T8 TQ T1',c:'VJ'},{i:'glGYJAPE-J4',n:'T8 TQ T2',c:'VJ'},{i:'Dk1KNo88UHU',n:'T8 TQ T3',c:'VJ'},{i:'4Eequpqx7zs',n:'T8 TQ T4',c:'VJ'},{i:'BR7lel_qZRw',n:'T8 TQ T5',c:'VJ'}]}]}]},
+  toan9:{n:'Toán 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'nDqC-YWY2ik',n:'T9 TQ T1',c:'VJ'},{i:'9dDCHANWETs',n:'T9 TQ T2',c:'VJ'},{i:'gNajxAy4TtE',n:'T9 TQ T3',c:'VJ'},{i:'-54oM-UE4ck',n:'T9 TQ T4',c:'VJ'},{i:'KAazDN0Xmr0',n:'T9 TQ T5',c:'VJ'}]}]}]},
+  toan10:{n:'Toán 10',ch:[
+    {t:'C1: Mệnh đề - Tập hợp',bg:'#e8f4fd',lessons:[
+      {t:'Bài 1: Mệnh đề',v:[{i:'4dUuuV5yFvM',n:'Mệnh đề T1',c:'TQ'},{i:'-BkRx0gm23o',n:'Mệnh đề T2',c:'TQ'},{i:'vDDG2jH5qfY',n:'Mệnh đề T3',c:'TQ'},{i:'edVegk01ZsA',n:'Mệnh đề VJ',c:'VJ'}]},
+      {t:'Bài 2: Tập hợp',v:[{i:'emLiXccjys4',n:'Tập hợp T1',c:'TQ'},{i:'qR-rwgAp1Uw',n:'Tập hợp T2',c:'TQ'},{i:'xB_nHKTX444',n:'Tập hợp T3',c:'TQ'},{i:'m-HPI-7pG_c',n:'Tập hợp T4',c:'TQ'}]},
+      {t:'BT cuối C1',v:[{i:'JySXqEuzA_Q',n:'BT cuối C1',c:'TQ'},{i:'I8G5qPB2uRk',n:'Ôn C1',c:'CH'}]}]},
+    {t:'C2: BPT 2 ẩn',bg:'#fef3c7',lessons:[
+      {t:'Bài 3: BPT 2 ẩn',v:[{i:'LUDXjX2XPRE',n:'BPT T1',c:'TQ'},{i:'Sbodsz4U8Zo',n:'BPT T2',c:'TQ'},{i:'y8X5ZUdpfU8',n:'BPT T3',c:'TQ'}]},
+      {t:'Bài 4: Hệ BPT',v:[{i:'rZH1cZ3_dJk',n:'Hệ BPT T1',c:'TQ'},{i:'Vd20z4rcFDo',n:'Hệ BPT T2',c:'TQ'},{i:'7MNKs4GmdUA',n:'Hệ BPT T3',c:'TQ'}]},
+      {t:'BT cuối C2',v:[{i:'MNefivUP1AU',n:'BT C2 T1',c:'TQ'},{i:'h-JmY8lZ2qI',n:'BT C2 T2',c:'TQ'},{i:'V-N2ApB3mIg',n:'BT C2 T3',c:'TQ'},{i:'ewLV8X4qTYI',n:'BT C2 T4',c:'TQ'}]}]},
+    {t:'C3: HTL trong tam giác',bg:'#e8f4fd',lessons:[
+      {t:'Bài 5: GTLG',v:[{i:'j1EYbiPNB_s',n:'GTLG T1',c:'TQ'},{i:'_GqL8D5YSHU',n:'GTLG T2',c:'TQ'},{i:'_pgilzE1QGg',n:'GTLG T3',c:'TQ'},{i:'P3y5L94EkIQ',n:'GTLG T4',c:'TQ'}]},
+      {t:'Bài 6: HTL trong tg',v:[{i:'4rXeqdVy20k',n:'HTL T1',c:'TQ'},{i:'ohB2309RBlQ',n:'HTL T2',c:'TQ'},{i:'j1wxq0uMblQ',n:'HTL T3',c:'TQ'},{i:'SHM5fZEGK54',n:'HTL T4',c:'TQ'},{i:'6_Zz6_MTPhQ',n:'HTL T5',c:'TQ'},{i:'pvaua9QDz1c',n:'HTL T6',c:'TQ'}]},
+      {t:'BT cuối C3',v:[{i:'hVqJvZ_3Seo',n:'BT C3 T1',c:'TQ'},{i:'IzkMEVZuc54',n:'BT C3 T2',c:'TQ'},{i:'77a-UJC55KA',n:'BT C3 T3',c:'TQ'}]}]},
+    {t:'C4: Vectơ',bg:'#fef3c7',lessons:[
+      {t:'Bài 7: Vectơ',v:[{i:'FTTZY9b1ous',n:'Vectơ T1',c:'TQ'},{i:'GNr6Y5UijN4',n:'Vectơ T2',c:'TQ'}]},
+      {t:'Bài 8: Tổng hiệu',v:[{i:'KonKbScvWL0',n:'TH vectơ T1',c:'TQ'},{i:'g8QmUFmz4v0',n:'TH vectơ T2',c:'TQ'},{i:'FOEbq9vBplA',n:'TH vectơ T3',c:'TQ'},{i:'eN71nsLiZBg',n:'TH vectơ T4',c:'TQ'}]},
+      {t:'Bài 9: Tích với số',v:[{i:'nm35fHPxnPE',n:'Tích vs T1',c:'TQ'},{i:'i6dbBGlVd6o',n:'Tích vs T2',c:'TQ'},{i:'i1VJv-yChFI',n:'Tích vs T3',c:'TQ'}]},
+      {t:'B10: Tọa độ vectơ',v:[{i:'J7AkmoSmeP0',n:'Tọa độ T1',c:'TQ'},{i:'CpeLBot6BOg',n:'Tọa độ T2',c:'TQ'},{i:'zr0fn4dxcvY',n:'Tọa độ T3',c:'TQ'}]},
+      {t:'B11: Tích vô hướng',v:[{i:'iGPpKRIPx3U',n:'TVH T1',c:'TQ'},{i:'9GQYFqyx9s4',n:'TVH T2',c:'TQ'},{i:'jK9nhkTWgnc',n:'TVH T3',c:'TQ'},{i:'QlMSDUNtqKE',n:'TVH T4',c:'TQ'}]}]},
+    {t:'C5: Số đặc trưng MSL',bg:'#e8f4fd',lessons:[
+      {t:'B12: Số gần đúng',v:[{i:'7XfucwrQbT8',n:'Số gần đúng T1',c:'TQ'},{i:'NG3Ito9tvQ0',n:'Số gần đúng T2',c:'TQ'},{i:'pHGseK98OGQ',n:'Số gần đúng T3',c:'TQ'}]},
+      {t:'B13: Số TT TT',v:[{i:'2XlxXB_7nWM',n:'Số đặc trưng T1',c:'TQ'},{i:'INtU3RacsN8',n:'Số đặc trưng T2',c:'TQ'},{i:'igf3jpMugRU',n:'Số đặc trưng T3',c:'TQ'},{i:'0R7miEKoO5c',n:'Số đặc trưng T4',c:'TQ'}]},
+      {t:'B14: Số phân tán',v:[{i:'c4ekAzzgSW4',n:'Phân tán T1',c:'TQ'},{i:'MrDm1L1dJmw',n:'Phân tán T2',c:'TQ'},{i:'MdSimBhx7FQ',n:'Phân tán T3',c:'TQ'},{i:'GLLPzkBTpac',n:'Phân tán T4',c:'TQ'}]},
+      {t:'BT cuối C5',v:[{i:'rmiRLt1EpwE',n:'BT C5 T1',c:'TQ'},{i:'3pfZZbfUrY0',n:'BT C5 T2',c:'TQ'}]}]},
+    {t:'C6: Hàm số - Đồ thị',bg:'#fef3c7',lessons:[
+      {t:'B15: Hàm số',v:[{i:'BLnK5a7p8kA',n:'HS T1',c:'TQ'},{i:'qwK9CbdHM5o',n:'HS T2',c:'TQ'},{i:'9PO5uyplTDg',n:'HS T3',c:'TQ'},{i:'ltSHBRZ0QGI',n:'HS T4',c:'TQ'}]},
+      {t:'B16: HS bậc hai',v:[{i:'1htvf1v7DYc',n:'HSBH T1',c:'TQ'},{i:'-ao6zOrnfGs',n:'HSBH T2',c:'TQ'},{i:'yTeXfIwjHWs',n:'HSBH T3',c:'TQ'},{i:'JSSWkFvD5cU',n:'HSBH T4',c:'TQ'},{i:'BKOmurMq6pA',n:'HSBH T5',c:'TQ'}]},
+      {t:'B17: Dấu tam thức',v:[{i:'_cT0Y4mgB7E',n:'Dấu TT T1',c:'TQ'},{i:'JlkdWGMX4yc',n:'Dấu TT T2',c:'TQ'},{i:'gPWDQovwnic',n:'Dấu TT T3',c:'TQ'},{i:'jmp3GFIeWrM',n:'Dấu TT T4',c:'TQ'}]},
+      {t:'B18: PT quy về bậc 2',v:[{i:'NT8gxgx57S4',n:'PT về b2 T1',c:'TQ'},{i:'MGE844lnqPM',n:'PT về b2 T2',c:'TQ'},{i:'fFXWlzxRUIw',n:'PT về b2 T3',c:'TQ'},{i:'h4kVEoFzxrE',n:'PT về b2 T4',c:'TQ'}]}]},
+    {t:'C7: PPTĐ trong mp',bg:'#e8f4fd',lessons:[
+      {t:'B19: PT đường thẳng',v:[{i:'PleToG7EBC0',n:'PT đt T1',c:'TQ'},{i:'MgbG9blpXGU',n:'PT đt T2',c:'TQ'},{i:'ks-vCi3zEfc',n:'PT đt T3',c:'TQ'},{i:'7UGxbu25Hsw',n:'PT đt T4',c:'TQ'},{i:'KL0ONA7edhM',n:'PT đt T5',c:'TQ'}]},
+      {t:'B20: Vị trí tương đối',v:[{i:'lI64ELB7-Y0',n:'VTTĐ T1',c:'TQ'},{i:'wUeklHGY3DY',n:'VTTĐ T2',c:'TQ'},{i:'dwFtPGuZj4c',n:'VTTĐ T3',c:'TQ'}]}]},
+    {t:'C8+9: Tổ hợp + Xác suất',bg:'#fef3c7',lessons:[{t:'B23-27: Đại số tổ hợp, Xác suất',v:[]}]}]},
+  toan11:{n:'Toán 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'hBx3cV2ugks',n:'T11 TQ T1',c:'VJ'},{i:'uyhbVbE1EYo',n:'T11 TQ T2',c:'VJ'},{i:'9TJpKdVQE54',n:'T11 TQ T3',c:'VJ'},{i:'wjEj8I7ED30',n:'T11 TQ T4',c:'VJ'},{i:'K_ChlBRnRTs',n:'T11 TQ T5',c:'VJ'}]}]}]},
+  toan12:{n:'Toán 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'phvpqxLNTUQ',n:'T12 VJ',c:'VJ'},{i:'W_RNJgPcUUw',n:'T12 VJ2',c:'VJ'},{i:'mXjOLdANp-g',n:'T12 VJ3',c:'VJ'},{i:'7XaLq6-i3T8',n:'T12 VJ4',c:'VJ'}]}]}]},
+  // === VẬT LÝ ===
+  ly6:{n:'Vật Lý 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L6 Cơ bản',c:'VJ'}]}]}]},
+  ly7:{n:'Vật Lý 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L7 Cơ bản',c:'VJ'}]}]}]},
+  ly8:{n:'Vật Lý 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L8 Cơ bản',c:'VJ'}]}]}]},
+  ly9:{n:'Vật Lý 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L9 Cơ bản',c:'VJ'}]}]}]},
+  ly10:{n:'Vật Lý 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'Jbt_nBBJ1BI',n:'L10 VJ',c:'VJ'},{i:'beLH1Q5UqS0',n:'L10 VJ2',c:'VJ'},{i:'eR7Meg07bz4',n:'L10 VJ3',c:'VJ'},{i:'q2v5edqqTZQ',n:'L10 VJ4',c:'VJ'}]}]}]},
+  ly11:{n:'Vật Lý 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'k9J7SCuAR0I',n:'L11 VJ',c:'VJ'},{i:'MsxloIGZvwU',n:'L11 VJ2',c:'VJ'},{i:'vwQ7oC-WuWQ',n:'L11 VJ3',c:'VJ'},{i:'hBx3cV2ugks',n:'L11 VJ4',c:'VJ'}]}]}]},
+  ly12:{n:'Vật Lý 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'2FqKmebYY1E',n:'L12 VJ',c:'VJ'},{i:'e0uIcQz9x5g',n:'L12 VJ2',c:'VJ'},{i:'sxIuk9jOHzU',n:'L12 VJ3',c:'VJ'},{i:'V_Ug97vQOSQ',n:'L12 VJ4',c:'VJ'}]}]}]},
+  // === HÓA HỌC ===
+  hoa8:{n:'Hóa Học 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'H8 Cơ bản',c:'VJ'}]}]}]},
+  hoa9:{n:'Hóa Học 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'H9 Cơ bản',c:'VJ'}]}]}]},
+  hoa10:{n:'Hóa Học 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'SirbiX5PONE',n:'H10 VJ',c:'VJ'},{i:'Ed12it0YW-s',n:'H10 VJ2',c:'VJ'},{i:'9C3Q2sJdtBQ',n:'H10 VJ3',c:'VJ'}]}]}]},
+  hoa11:{n:'Hóa Học 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'2wD8sFFjddw',n:'H11 VJ',c:'VJ'},{i:'7u3qtrdw2rI',n:'H11 VJ2',c:'VJ'},{i:'nBau0hucOXY',n:'H11 VJ3',c:'VJ'},{i:'ommKZ_T_Hlk',n:'H11 VJ4',c:'VJ'}]}]}]},
+  hoa12:{n:'Hóa Học 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'hEuHcAhAwu8',n:'H12 VJ',c:'VJ'},{i:'cGKkEnxOLeU',n:'H12 VJ2',c:'VJ'},{i:'5GgQ_8rzY9E',n:'H12 VJ3',c:'VJ'},{i:'Ij6aaaQaqmM',n:'H12 VJ4',c:'VJ'}]}]}]},
+  // === SINH HỌC ===
+  sinh6:{n:'Sinh Học 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH6 Cơ bản',c:'VJ'}]}]}]},
+  sinh7:{n:'Sinh Học 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH7 Cơ bản',c:'VJ'}]}]}]},
+  sinh8:{n:'Sinh Học 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH8 Cơ bản',c:'VJ'}]}]}]},
+  sinh9:{n:'Sinh Học 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH9 Cơ bản',c:'VJ'}]}]}]},
+  sinh10:{n:'Sinh Học 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'038q4MSCUhg',n:'SH10 VJ',c:'VJ'},{i:'OFzVdzBI5Tw',n:'SH10 VJ2',c:'VJ'},{i:'evmLSg206_I',n:'SH10 VJ3',c:'VJ'},{i:'wAb9bkcJQ2U',n:'SH10 VJ4',c:'VJ'}]}]}]},
+  sinh11:{n:'Sinh Học 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'9lJauphhcNg',n:'SH11 VJ',c:'VJ'},{i:'kog16-McgHI',n:'SH11 VJ2',c:'VJ'},{i:'IJhf7Ol4uJQ',n:'SH11 VJ3',c:'VJ'},{i:'egwk1_yhg8g',n:'SH11 VJ4',c:'VJ'}]}]}]},
+  sinh12:{n:'Sinh Học 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'O8saMLKaYQY',n:'SH12 VJ',c:'VJ'},{i:'GiY0Y9CQJvU',n:'SH12 VJ2',c:'VJ'},{i:'rxzoXlpz4mo',n:'SH12 VJ3',c:'VJ'},{i:'bHHD5yEYOac',n:'SH12 VJ4',c:'VJ'}]}]}]},
+  // === NGỮ VĂN ===
+  van6:{n:'Ngữ Văn 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V6 Cơ bản',c:'VJ'}]}]}]},
+  van7:{n:'Ngữ Văn 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V7 Cơ bản',c:'VJ'}]}]}]},
+  van8:{n:'Ngữ Văn 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V8 Cơ bản',c:'VJ'}]}]}]},
+  van9:{n:'Ngữ Văn 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V9 Cơ bản',c:'VJ'}]}]}]},
+  van10:{n:'Ngữ Văn 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'VLg7Ui_APpg',n:'V10 VJ',c:'VJ'}]}]}]},
+  van11:{n:'Ngữ Văn 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7t3uD34ceXE',n:'V11 VJ',c:'VJ'}]}]}]},
+  van12:{n:'Ngữ Văn 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'7t3uD34ceXE',n:'V12 VJ',c:'VJ'}]}]}]},
+  // === TIẾNG ANH ===
+  anh6:{n:'Tiếng Anh 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A6 Cơ bản',c:'VJ'}]}]}]},
+  anh7:{n:'Tiếng Anh 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A7 Cơ bản',c:'VJ'}]}]}]},
+  anh8:{n:'Tiếng Anh 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A8 Cơ bản',c:'VJ'}]}]}]},
+  anh9:{n:'Tiếng Anh 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A9 Cơ bản',c:'VJ'}]}]}]},
+  anh10:{n:'Tiếng Anh 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'HzV9Vy4TLlo',n:'A10 VJ',c:'VJ'},{i:'qJAAu-6T9rg',n:'A10 VJ2',c:'VJ'},{i:'e10H78up1m0',n:'A10 VJ3',c:'VJ'}]}]}]},
+  anh11:{n:'Tiếng Anh 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'pYnEXDImtac',n:'A11 VJ',c:'VJ'},{i:'ommKZ_T_Hlk',n:'A11 VJ2',c:'VJ'}]}]}]},
+  anh12:{n:'Tiếng Anh 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'pYnEXDImtac',n:'A12 VJ',c:'VJ'}]}]}]},
+  // === LỊCH SỬ ===
+  su6:{n:'Lịch Sử 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S6 Cơ bản',c:'VJ'}]}]}]},
+  su7:{n:'Lịch Sử 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S7 Cơ bản',c:'VJ'}]}]}]},
+  su8:{n:'Lịch Sử 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S8 Cơ bản',c:'VJ'}]}]}]},
+  su9:{n:'Lịch Sử 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S9 Cơ bản',c:'VJ'}]}]}]},
+  su10:{n:'Lịch Sử 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'72-IFa93WoY',n:'S10 VJ',c:'VJ'},{i:'HTUq6Y8gYg4',n:'S10 VJ2',c:'VJ'}]}]}]},
+  su11:{n:'Lịch Sử 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'vVQMdaW5bXc',n:'S11 VJ',c:'VJ'},{i:'DHzr-UL1W08',n:'S11 VJ2',c:'VJ'},{i:'I2unKzI_A30',n:'S11 VJ3',c:'VJ'},{i:'hIMehnGaYVk',n:'S11 VJ4',c:'VJ'}]}]}]},
+  su12:{n:'Lịch Sử 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'j615s9znk4U',n:'S12 VJ',c:'VJ'},{i:'jawNLJvkjz0',n:'S12 VJ2',c:'VJ'},{i:'BuFJL6fmGZ0',n:'S12 VJ3',c:'VJ'},{i:'EXaB479b5uM',n:'S12 VJ4',c:'VJ'}]}]}]},
+  // === ĐỊA LÝ ===
+  dia6:{n:'Địa Lý 6',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D6 Cơ bản',c:'VJ'}]}]}]},
+  dia7:{n:'Địa Lý 7',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D7 Cơ bản',c:'VJ'}]}]}]},
+  dia8:{n:'Địa Lý 8',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D8 Cơ bản',c:'VJ'}]}]}]},
+  dia9:{n:'Địa Lý 9',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D9 Cơ bản',c:'VJ'}]}]}]},
+  dia10:{n:'Địa Lý 10',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'LyM34kZk-UU',n:'D10 VJ',c:'VJ'},{i:'mcsaP90esg4',n:'D10 VJ2',c:'VJ'},{i:'PhCUgEKv2nY',n:'D10 VJ3',c:'VJ'}]}]}]},
+  dia11:{n:'Địa Lý 11',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'EFEdht7D_TU',n:'D11 VJ',c:'VJ'},{i:'B1Df1fMKUNo',n:'D11 VJ2',c:'VJ'},{i:'1UOCYh3QXIQ',n:'D11 VJ3',c:'VJ'},{i:'uXRD8iVpZE4',n:'D11 VJ4',c:'VJ'}]}]}]},
+  dia12:{n:'Địa Lý 12',ch:[{t:'Bài giảng',bg:'#e8f4fd',lessons:[{t:'Toàn bộ',v:[{i:'2FqKmebYY1E',n:'D12 VJ',c:'VJ'},{i:'e0uIcQz9x5g',n:'D12 VJ2',c:'VJ'},{i:'sxIuk9jOHzU',n:'D12 VJ3',c:'VJ'},{i:'V_Ug97vQOSQ',n:'D12 VJ4',c:'VJ'}]}]}]},
+  // === TIẾNG VIỆT CẤP 1 ===
+  tiengviet1:{n:'Tiếng Việt 1',ch:[
+    {t:'Học vần',bg:'#e8f4fd',lessons:[{t:'Bài 1: Chữ cái & Vần',v:[{i:'cKq8Nv-8LhU',n:'Học vần T1',c:'CT'},{i:'H8xXNV-Rqgk',n:'Học vần T2',c:'CT'}]},{t:'Bài 2: Đánh vần',v:[{i:'e6nvrBeWepI',n:'Đánh vần T1',c:'CT'}]}]},
+    {t:'Tập đọc',bg:'#fef3c7',lessons:[{t:'Bài 1: Rèn đọc',v:[{i:'PuGATCejC60',n:'Tập đọc T1',c:'CT'}]}]}
+  ]},
+  tiengviet2:{n:'Tiếng Việt 2',ch:[
+    {t:'Học kì 1',bg:'#e8f4fd',lessons:[{t:'Bài 1-15: Tập đọc',v:[{i:'cKq8Nv-8LhU',n:'TV2 HK1 T1',c:'CT'},{i:'H8xXNV-Rqgk',n:'TV2 HK1 T2',c:'CT'}]},{t:'Bài 16-30: Luyện từ & câu',v:[]}]},
+    {t:'Học kì 2',bg:'#fef3c7',lessons:[{t:'Bài 31-45: Kể chuyện',v:[]},{t:'Bài 46-60: Tập làm văn',v:[]}]}
+  ]},
+  tiengviet3:{n:'Tiếng Việt 3',ch:[
+    {t:'HK1: Tập đọc',bg:'#e8f4fd',lessons:[{t:'Bài 1-35: Văn bản',v:[{i:'cKq8Nv-8LhU',n:'TV3 Cơ bản',c:'CT'}]}]},
+    {t:'HK2: Luyện từ & câu',bg:'#fef3c7',lessons:[{t:'Bài 36-70: Luyện viết',v:[]}]}
+  ]},
+  tiengviet4:{n:'Tiếng Việt 4',ch:[
+    {t:'HK1',bg:'#e8f4fd',lessons:[{t:'Bài 1-35: Tập đọc',v:[{i:'cKq8Nv-8LhU',n:'TV4 HK1',c:'CT'}]}]},
+    {t:'HK2',bg:'#fef3c7',lessons:[{t:'Bài 36-70: Tập làm văn',v:[]}]}
+  ]},
+  tiengviet5:{n:'Tiếng Việt 5',ch:[
+    {t:'HK1',bg:'#e8f4fd',lessons:[{t:'Bài 1-35: Tập đọc',v:[{i:'cKq8Nv-8LhU',n:'TV5 HK1',c:'CT'}]}]},
+    {t:'HK2',bg:'#fef3c7',lessons:[{t:'Bài 36-70: Luyện viết',v:[]}]}
+  ]},
+  // === KHOA HỌC ===
+  khoahoc4:{n:'Khoa Học 4',ch:[
+    {t:'Con người & SK',bg:'#e8f4fd',lessons:[{t:'Bài 1-15: Sức khỏe, Dinh dưỡng',v:[{i:'yE6DTjAHn6c',n:'KH4 Bài 1',c:'YT'},{i:'2ZhPSjfwrWU',n:'KH4 Bài 2',c:'YT'}]}]},
+    {t:'Vật chất & NL',bg:'#fef3c7',lessons:[{t:'Bài 16-30: Ánh sáng, Âm thanh',v:[]}]}
+  ]},
+  khoahoc5:{n:'Khoa Học 5',ch:[
+    {t:'Con người & SK',bg:'#e8f4fd',lessons:[{t:'Bài 1-15: Sức khỏe',v:[{i:'yE6DTjAHn6c',n:'KH5 Bài 1',c:'YT'}]}]},
+    {t:'MT & TN',bg:'#fef3c7',lessons:[{t:'Bài 16-30: Môi trường',v:[]}]}
+  ]}
+};
+
+// ====== CONSTANTS ======
+const SI = {toan:'📐',van:'📝',anh:'🌎',ly:'⚡',hoa:'🧪',sinh:'🧬',su:'📜',dia:'🌍',tiengviet:'📖',khoahoc:'🔬'};
+const SN = {toan:'Toán',van:'Ngữ Văn',anh:'Tiếng Anh',ly:'Vật Lý',hoa:'Hóa Học',sinh:'Sinh Học',su:'Lịch Sử',dia:'Địa Lý',tiengviet:'Tiếng Việt',khoahoc:'Khoa Học'};
+const GS = {
+  '1':['toan','tiengviet'],'2':['toan','tiengviet'],'3':['toan','tiengviet'],
+  '4':['toan','tiengviet','khoahoc'],'5':['toan','tiengviet','khoahoc'],
+  '6':['toan','van','anh','ly','sinh','su','dia'],
+  '7':['toan','van','anh','ly','sinh','su','dia'],
+  '8':['toan','van','anh','ly','hoa','sinh','su','dia'],
+  '9':['toan','van','anh','ly','hoa','sinh','su','dia'],
+  '10':['toan','van','anh','ly','hoa','sinh','su','dia'],
+  '11':['toan','van','anh','ly','hoa','sinh','su','dia'],
+  '12':['toan','van','anh','ly','hoa','sinh','su','dia']
+};
+const GR = [
+  {id:'1',l:'Lớp 1',r:'TH',c:'#10b981'},{id:'2',l:'Lớp 2',r:'TH',c:'#10b981'},{id:'3',l:'Lớp 3',r:'TH',c:'#10b981'},
+  {id:'4',l:'Lớp 4',r:'TH',c:'#10b981'},{id:'5',l:'Lớp 5',r:'TH',c:'#10b981'},
+  {id:'6',l:'Lớp 6',r:'THCS',c:'#f59e0b'},{id:'7',l:'Lớp 7',r:'THCS',c:'#f59e0b'},
+  {id:'8',l:'Lớp 8',r:'THCS',c:'#f59e0b'},{id:'9',l:'Lớp 9',r:'THCS',c:'#f59e0b'},
+  {id:'10',l:'Lớp 10',r:'THPT',c:'#2563eb'},{id:'11',l:'Lớp 11',r:'THPT',c:'#2563eb'},{id:'12',l:'Lớp 12',r:'THPT',c:'#2563eb'}
+];
+
+// ====== STATE ======
+let g=null, s=null, c=null, l=null;
+
+// ====== RENDER GRADES ======
+document.getElementById('gBtns').innerHTML = GR.map(x =>
+  `<button class="grade-btn" data-g="${x.id}" style="border-top-color:${x.c}">
+    <span class="grade-label">${x.l}</span>
+    <span class="grade-range">${x.r}</span>
+  </button>`
+).join('');
+
+document.getElementById('gBtns').onclick = e => {
+  const btn = e.target.closest('.grade-btn');
+  if (!btn) return;
+  document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  g = btn.dataset.g;
+  [s,c,l] = [null,null,null];
+  closeAllSections();
+  showSubs();
+  window.scrollTo({top: document.getElementById('subSec').offsetTop - 80, behavior:'smooth'});
+};
+
+// ====== SUBJECTS ======
+function showSubs() {
+  const gr = GR.find(x => x.id === g), subs = GS[g] || ['toan','van'];
+  document.getElementById('gTitle').textContent = gr.l + ' — Chọn môn';
+  document.getElementById('subSec').style.display = 'block';
+  document.getElementById('subTabs').innerHTML = subs.map(k =>
+    `<button class="subject-btn" data-s="${k}">${SI[k]||'📚'} ${SN[k]||k}</button>`
+  ).join('');
+}
+
+document.getElementById('subTabs').onclick = e => {
+  const btn = e.target.closest('.subject-btn');
+  if (!btn) return;
+  document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  s = btn.dataset.s;
+  [c,l] = [null,null];
+  closeVidLes();
+  showChs();
+  window.scrollTo({top: document.getElementById('chSec').offsetTop - 80, behavior:'smooth'});
+};
+
+// ====== CHAPTERS ======
+function showChs() {
+  const key = s + g;
+  const d = K[key];
+  const chs = d ? d.ch : [{t:'Bài giảng',lessons:[{t:'Bài 1',v:[]}]}];
+  const gr = GR.find(x => x.id === g).l;
+  const sn = SN[s] || s;
+  document.getElementById('chBread').innerHTML = `${gr} › ${sn} › <b>Chọn chương</b>`;
+  document.getElementById('chSec').style.display = 'block';
+  document.getElementById('chList').innerHTML = chs.map((ch,i) => {
+    let t = 0;
+    if (ch.lessons) ch.lessons.forEach(le => {if (le.v) t += le.v.length;});
+    return `<div class="chapter-card" data-i="${i}" style="border-left:4px solid ${ch.bg||'#2563eb'}">
+      <div class="chapter-num">CHƯƠNG ${i+1}</div>
+      <h3>${ch.t}</h3>
+      ${t ? '<span class="badge-ready">✅ '+t+' video</span>' : '<span class="badge-updating">🔄 Cập nhật</span>'}
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('chList').onclick = e => {
+  const card = e.target.closest('.chapter-card');
+  if (!card) return;
+  c = parseInt(card.dataset.i);
+  l = null;
+  document.getElementById('vidSec').style.display = 'none';
+  showLessons();
+  window.scrollTo({top: document.getElementById('lesSec').offsetTop - 80, behavior:'smooth'});
+};
+
+// ====== LESSONS ======
+function showLessons() {
+  const key = s + g;
+  const d = K[key];
+  const ch = d ? d.ch[c] : null;
+  if (!ch) return;
+  const gr = GR.find(x => x.id === g).l;
+  const sn = SN[s] || s;
+  document.getElementById('lesBread').innerHTML = `${gr} › ${sn} › <b>${ch.t}</b>`;
+  document.getElementById('lesSec').style.display = 'block';
+  document.getElementById('lesList').innerHTML = (ch.lessons||[]).map((le,i) => {
+    const t = le.v ? le.v.filter(x => x.i && x.i.length===11).length : 0;
+    return `<div class="lesson-card" data-i="${i}" data-v="${t}">
+      <div class="l-icon">${t ? '📺' : '📝'}</div>
+      <h4>${le.t}</h4>
+      <div style="font-size:12px;color:#64748b;margin-top:4px">${t ? '▶️ '+t+' video' : '⏳ Cập nhật'}</div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('lesList').onclick = e => {
+  const card = e.target.closest('.lesson-card');
+  if (!card) return;
+  l = parseInt(card.dataset.i);
+  document.querySelectorAll('.lesson-card').forEach(b => b.classList.remove('active'));
+  card.classList.add('active');
+  showVids();
+  window.scrollTo({top: document.getElementById('vidSec').offsetTop - 80, behavior:'smooth'});
+};
+
+// ====== VIDEOS ======
+function showVids() {
+  const key = s + g;
+  const d = K[key];
+  const ch = d ? d.ch[c] : null;
+  const le = ch ? ch.lessons[l] : null;
+  if (!le) return;
+  const gr = GR.find(x => x.id === g).l;
+  const sn = SN[s] || s;
+  const vs = le.v || [];
+  document.getElementById('vTitle').textContent = gr + ' · ' + sn + ' — ' + le.t;
+  document.getElementById('bBtnL').textContent = '← ' + (ch ? ch.t : '');
+  if (vs.length === 0) {
+    document.getElementById('vGrid').innerHTML = '<div class="empty-state"><div class="icon">📹</div><p>Chưa có video cho bài này.<br>Dùng ô "Tìm trên YouTube" bên dưới để tìm bài giảng!</p></div>';
+  } else {
+    document.getElementById('vGrid').innerHTML = vs.map(v =>
+      `<div class="video-card" data-id="${v.i}">
+        <div class="thumb">
+          <img src="https://i.ytimg.com/vi/${v.i}/hqdefault.jpg" alt="" loading="lazy" onerror="this.outerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#1e293b;font-size:32px;color:#64748b\\'>🎬</div>'">
+          <div class="play">▶️</div>
+        </div>
+        <div class="v-info">
+          <h4>${v.n}</h4>
+          <div class="channel">👨‍🏫 ${v.c||'YouTube'}</div>
+        </div>
+      </div>`
+    ).join('');
+  }
+  document.getElementById('vidSec').style.display = 'block';
+}
+
+// ====== VIDEO PLAYER ======
+document.getElementById('vGrid').onclick = e => {
+  const card = e.target.closest('.video-card');
+  if (!card) return;
+  const id = card.dataset.id;
+  if (!id) return;
+  playVideo(id, card.querySelector('h4').textContent);
+};
+
+function playVideo(id, title) {
+  document.getElementById('pTitle').textContent = title || 'Đang phát...';
+  document.getElementById('pFrame').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>`;
+  document.getElementById('pModal').style.display = 'flex';
+}
+
+function closePlayer() {
+  document.getElementById('pModal').style.display = 'none';
+  document.getElementById('pFrame').innerHTML = '';
+}
+
+document.getElementById('pClose').onclick = closePlayer;
+document.getElementById('pModal').onclick = e => { if (e.target === e.currentTarget) closePlayer(); };
+document.onkeydown = e => { if (e.key === 'Escape') closePlayer(); };
+
+// ====== BACK ======
+document.getElementById('bBtnL').onclick = () => {
+  l = null;
+  document.getElementById('vidSec').style.display = 'none';
+  document.getElementById('lesSec').scrollIntoView({behavior:'smooth'});
+};
+
+// ====== HELPER: CLOSE SECTIONS ======
+function closeAllSections() {
+  ['subSec','chSec','lesSec','vidSec'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+}
+function closeVidLes() {
+  ['vidSec','lesSec'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+}
+
+// ====== SEARCH ======
+document.getElementById('sBtn').onclick = () => {
+  const q = document.getElementById('sInp').value.trim();
+  if (!q) return;
+  // Search within our data first
+  const results = searchInData(q);
+  if (results.length > 0) {
+    showSearchResults(results, q);
+  } else {
+    // Fallback to YouTube search
+    window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(q + ' bài giảng'), '_blank');
+    showToast('🔍 Đã mở tìm kiếm YouTube cho "' + q + '"', 'success');
+  }
+};
+
+document.getElementById('sInp').onkeydown = e => { if (e.key === 'Enter') document.getElementById('sBtn').click(); };
+
+// ====== YOUTUBE SEARCH BUTTON ======
+document.getElementById('ytBtn').onclick = () => {
+  const q = document.getElementById('ytInp').value.trim();
+  if (!q) return;
+  window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(q), '_blank');
+  showToast('🔍 Đã mở YouTube tìm: "' + q + '"', 'success');
+};
+document.getElementById('ytInp').onkeydown = e => { if (e.key === 'Enter') document.getElementById('ytBtn').click(); };
+
+// ====== SEARCH IN DATA ======
+function searchInData(query) {
+  const q = query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const results = [];
+  for (const key of Object.keys(K)) {
+    const subj = K[key];
+    if (!subj.ch) continue;
+    const sn = SN[key.replace(/\d+/g,'')] || '';
+    const gn = key.replace(/[a-z]/g,'');
+    for (let ci = 0; ci < subj.ch.length; ci++) {
+      const ch = subj.ch[ci];
+      if (!ch.lessons) continue;
+      for (let li = 0; li < ch.lessons.length; li++) {
+        const le = ch.lessons[li];
+        const searchText = (sn + ' ' + gn + ' ' + ch.t + ' ' + le.t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        if (searchText.includes(q)) {
+          results.push({key, ci, li, gn: subj.n, cn: ch.t, ln: le.t, vs: le.v||[]});
+        }
+      }
+    }
+  }
+  return results;
+}
+
+// ====== SHOW SEARCH RESULTS ======
+function showSearchResults(results, query) {
+  closeAllSections();
+  // Show results in a special section
+  const sec = document.getElementById('subSec');
+  document.getElementById('gTitle').textContent = '🔎 Kết quả tìm "' + query + '" (' + results.length + ' kết quả)';
+  document.getElementById('subTabs').innerHTML = `<button class="back-btn" id="clearSearch" style="margin-bottom:12px">← Xóa tìm kiếm</button>
+    <div style="width:100%"></div>
+  `;
+  document.getElementById('subTabs').innerHTML += results.map((r,i) => `
+    <div class="chapter-card" data-sr="${i}" style="width:100%;margin-bottom:8px;cursor:pointer">
+      <div class="chapter-num">${r.gn} · ${r.cn}</div>
+      <h3>${r.ln}</h3>
+      ${r.vs.length ? '<span class="badge-ready">✅ '+r.vs.length+' video</span>' : '<span class="badge-updating">🔎 Click để xem</span>'}
+    </div>
+  `).join('');
+  sec.style.display = 'block';
+
+  document.getElementById('subTabs').onclick = e => {
+    const card = e.target.closest('.chapter-card');
+    if (!card) return;
+    const idx = parseInt(card.dataset.sr);
+    const r = results[idx];
+    if (!r) return;
+    // Navigate to this lesson
+    g = r.key.replace(/[a-z]/g,'');
+    s = r.key.replace(/\d+/g,'');
+    c = r.ci;
+    l = r.li;
+    closeAllSections();
+    // Set grade active
+    document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+    const gb = document.querySelector(`.grade-btn[data-g="${g}"]`);
+    if (gb) gb.classList.add('active');
+    // Show subjects then navigate
+    showSubs();
+    document.querySelectorAll('.subject-btn').forEach(b => {
+      b.classList.remove('active');
+      if (b.dataset.s === s) b.classList.add('active');
+    });
+    document.getElementById('chSec').style.display = 'block';
+    showLessons();
+    showVids();
+    window.scrollTo({top: document.getElementById('vidSec').offsetTop - 80, behavior:'smooth'});
+  };
+
+  const clearBtn = document.getElementById('clearSearch');
+  if (clearBtn) {
+    clearBtn.onclick = () => {
+      if (g) { showSubs(); } else { closeAllSections(); }
+    };
+  }
+}
+
+// ====== STATS ======
+let totalVideos = 0;
+const allVideos = [];
+for (const key of Object.keys(K)) {
+  const subj = K[key];
+  if (!subj.ch) continue;
+  for (let ci = 0; ci < subj.ch.length; ci++) {
+    const ch = subj.ch[ci];
+    if (!ch.lessons) continue;
+    for (let li = 0; li < ch.lessons.length; li++) {
+      const vs = ch.lessons[li].v || [];
+      vs.forEach(v => {
+        if (v.i && v.i.length === 11) {
+          allVideos.push({key, ci, li, v, gn: subj.n, cn: ch.t, ln: ch.lessons[li].t});
+        }
+      });
+      totalVideos += vs.filter(x => x.i && x.i.length === 11).length;
+    }
+  }
+}
+
+document.getElementById('stats').innerHTML = `
+  <div class="stat-item"><span class="stat-num">12</span><span class="stat-label">Khối lớp</span></div>
+  <div class="stat-item"><span class="stat-num">${Object.keys(K).length}</span><span class="stat-label">Môn học</span></div>
+  <div class="stat-item"><span class="stat-num">${totalVideos}</span><span class="stat-label">Video</span></div>
+`;
+
+// ====== RANDOM ======
+document.getElementById('randomBtn').onclick = () => {
+  if (!allVideos.length) return;
+  const r = allVideos[Math.floor(Math.random() * allVideos.length)];
+  const res = document.getElementById('randomResult');
+  if (!res) return;
+  const safeTitle = r.v.n.replace(/'/g,"\\'");
+  res.innerHTML = `
+    <h4>🎯 ${r.v.n}</h4>
+    <p>📂 ${r.gn} · ${r.cn} · ${r.ln} · 👨‍🏫 ${r.v.c||'YouTube'}</p>
+    <span class="play-now" onclick="playVideo('${r.v.i}','${safeTitle}')">▶️ Xem ngay</span>`;
+  res.classList.add('show');
+};
+
+// ====== LOGO CLICK ======
+document.getElementById('logoHome').onclick = () => {
+  [g,s,c,l] = [null,null,null,null];
+  closeAllSections();
+  document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+  window.scrollTo({top: 0, behavior:'smooth'});
+};
+
+// ====== TOAST ======
+function showToast(msg, type) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.className = 'toast' + (type === 'error' ? ' error' : '');
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+// ====== DARK MODE ======
+const themeBtn = document.getElementById('themeBtn');
+if (localStorage.getItem('eduvideo-theme') === 'dark') {
+  document.body.classList.add('dark-mode');
+  themeBtn.textContent = '☀️';
+}
+themeBtn.onclick = () => {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+  themeBtn.textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('eduvideo-theme', isDark ? 'dark' : 'light');
+};
+</script>
+</body>
+</html>
